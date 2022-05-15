@@ -40,3 +40,4 @@ yarn-debug.log*
 .yarn-integrity
 
 /db/*.sqlite3
+/db/*.sqlite3-journal
