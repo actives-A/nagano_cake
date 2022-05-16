@@ -1,18 +1,40 @@
-<h1>商品新規登録</h1>
-<%= form_with model: @list ,method: :get do |f| %>
-<%= f.label :image %>
-<%= f.file_field :image %>
+<h2>商品新規登録</h2>
+<%= form_with model: @item ,url: administrator_items_path,method: :post do |f| %>
+<div>
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+</div>
 
-<%= f.label :name %>
-<%= f.text_field :name %>
+<div>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</div>
 
-<%= f.label :explanation %>
-<%= f.text_area :explanation %>
+<div>
+  <%= f.label :explanation %>
+  <%= f.text_area :explanation %>
+</div>
 
-<%= f.label "ジャンル" %>
-<%= f.select :genre_id,[1,2] %>
+<div>
+  <%= f.label "ジャンル" %>
+  <%= f.select :genre_id,[1,2] %>
+</div>
 
-<%= f.label "税抜き価格" %>
-<%= f.text_field :out_tax_price %>
+<div>
+  <%= f.label "税抜き価格" %>
+  <%= f.number_field :out_tax_price %>
+</div>
+
+<div>
+  <%= f.label :sales_status,"販売中" %>
+  <%= f.radio_button :sales_status, true %>
+  <%= f.label :sales_status,"販売中止" %>
+  <%= f.radio_button :sales_status, false %>
+</div>
+
+<div>
+  <%= f.submit "新規登録" %>
+</div>
+
 
 <% end %>

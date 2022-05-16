@@ -6,4 +6,8 @@ class Item < ApplicationRecord
 
   has_one_attached:image
 
+  def get_image
+    self.image.attached? ? image : 'no_image.png'
+  end
+
 end
