@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+
+
+ devise_for :administrator, skip: [:registrations, :passwords] ,controllers: {
+  sessions: "administrator/sessions"
+ }
+
   namespace :administrator do
     resources :items ,only: [:index,:show,:new,:edit,:create,:update]
   end
@@ -12,6 +18,6 @@ Rails.application.routes.draw do
 resources :addresses
 
 
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
 end
