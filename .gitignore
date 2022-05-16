@@ -39,4 +39,5 @@
 yarn-debug.log*
 .yarn-integrity
 
-/db/*.splite3
+/db/*.sqlite3
+/db/*.sqlite3-journal
