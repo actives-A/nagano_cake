@@ -1,0 +1,41 @@
+<h2>商品編集</h2>
+<h2>商品新規登録</h2>
+<%= form_with model: @item ,url: administrator_item_path,method: :patch do |f| %>
+<div>
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+</div>
+
+<div>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</div>
+
+<div>
+  <%= f.label :explanation %>
+  <%= f.text_area :explanation %>
+</div>
+
+<div>
+  <%= f.label "ジャンル" %>
+  <%= f.select :genre_id,[1,2] %>
+</div>
+
+<div>
+  <%= f.label "税抜き価格" %>
+  <%= f.number_field :out_tax_price %>
+</div>
+
+<div>
+  <%= f.label :sales_status,"販売中" %>
+  <%= f.radio_button :sales_status, true %>
+  <%= f.label :sales_status,"販売中止" %>
+  <%= f.radio_button :sales_status, false %>
+</div>
+
+<div>
+  <%= f.submit "変更を保存する" %>
+</div>
+
+
+<% end %>
