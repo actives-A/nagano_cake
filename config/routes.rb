@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-
-
-
  devise_for :administrator, skip: [:registrations, :passwords] ,controllers: {
   sessions: "administrator/sessions"
  }
@@ -16,7 +13,9 @@ Rails.application.routes.draw do
   }
 
 resources :addresses
-
+resources :customers, only: [:show, :edit, :update]
+get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+patch '/customers/:id/withdrawal' => 'customaers#withdrawal', as: 'withdrawal'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
