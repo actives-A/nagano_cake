@@ -9,5 +9,9 @@ class Item < ApplicationRecord
   def get_image
     self.image.attached? ? image : 'no_image.png'
   end
+  
+  def with_tax_price
+    (out_tax_price * 1.1).floor
+  end
 
 end
