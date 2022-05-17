@@ -1,0 +1,41 @@
+<h2>注文情報の確認</h2>
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if false %>
+    <% @order.cart_items.each do |order_item| %>
+    <tr>
+      <td><%= order_item.name %></td>
+      <td><%= order_item.intax_price %></td>
+      <td><%= order_item.quantity %></td>
+      <td><%= order_item.intax_price *order_item.quantyty %></td>
+    </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>送料</th>
+      <th>商品合計</th>
+      <th>請求金額合計</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>800</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
