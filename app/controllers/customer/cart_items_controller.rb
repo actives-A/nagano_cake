@@ -17,15 +17,19 @@ class Customer::CartItemsController < ApplicationController
   end
 
   def update
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.update(cart_item_params)
+    flash[:notice] = "個数を変更しました"
+    redirect_to cart_items_path
   end
 
   def destroy
-    @cart_item = CartItem.find_by(params[:id])
+    @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
     redirect_to cart_items_path
   end
 
-  def all_destroy
+  def destroy_all
     @cart_items = current_customer.cart_items
     @cart_items.destroy_all
     flash[:complete]="カートを空にしました"
@@ -39,4 +43,3 @@ class Customer::CartItemsController < ApplicationController
   end
 
 end
-
