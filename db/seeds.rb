@@ -15,6 +15,11 @@
 #   user.save!
 # end
 
+(1..10).each do |i|
+  Item.create(genre_id:1,name: "test#{i}",explanation: "test#{i}",out_tax_price: i*100,sales_status: true)
+end
+
+
 # (1..10).each do |i|
 #   Item.create(genre_id: i,name: "test#{i}",explanation: "test#{i}",out_tax_price: i*100,sales_status: true)
 # end
@@ -26,7 +31,6 @@ end
 # (1..10).each do |i|
 #   Address.create(name: "ssss",customer_id: 1,postal_code: "ssssss",address: "1222333")
 # end
-
 
 
 # This file should contain all the record creation needed to seed the database with its default values.
