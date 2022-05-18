@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
 
-  
+
  devise_for :administrator, skip: [:registrations, :passwords] ,controllers: {
   sessions: "administrator/sessions"
  }
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   }
 
 resources :cart_items, only: [:index, :create, :update, :destroy]
-delete 'cart_items/:id' => 'cart_items#all_destroy'
+delete 'cart_items' => 'cart_items#all_destroy'
 resources :addresses
 
 
