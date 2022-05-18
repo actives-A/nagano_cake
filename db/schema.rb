@@ -11,8 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
-ActiveRecord::Schema.define(version: 2022_05_16_075559) do
-
+ActiveRecord::Schema.define(version: 2022_05_17_194759) do
   create_table "administrators", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -24,7 +23,7 @@ ActiveRecord::Schema.define(version: 2022_05_16_075559) do
     t.index ["email"], name: "index_administrators_on_email", unique: true
     t.index ["reset_password_token"], name: "index_administrators_on_reset_password_token", unique: true
   end
-  
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -130,6 +129,18 @@ ActiveRecord::Schema.define(version: 2022_05_16_075559) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer "item_id"
+    t.integer "order_id"
+    t.integer "quantity"
+    t.integer "intax_price"
+    t.integer "puroduction_status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+
   create_table "orders", force: :cascade do |t|
     t.integer "custormer_id"
     t.integer "send_money"
@@ -139,10 +150,6 @@ ActiveRecord::Schema.define(version: 2022_05_16_075559) do
     t.string "postal_code"
     t.string "address"
     t.integer "order_status"
-  end
-  
-  create_table "genres", force: :cascade do |t|
-    t.string "genre_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

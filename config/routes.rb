@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
-
+  # ルートパスの仮置き
+  root to: "customer/orders#new"
 
   scope module: :customer do
     resources :orders,only:[:new,:create]
     post "orders/confirm"
     get "orders/complete"
     resources :cart_items, only: [:index, :create, :update, :destroy]
-    delete 'cart_items/:id' => 'cart_items#all_destroy'
+    delete 'cart_items/all_destroy' => 'cart_items#all_destroy'
     resources :addresses
   end
 

@@ -1,9 +1,9 @@
-class CartItemsController < ApplicationController
+class Customer::CartItemsController < ApplicationController
   def index
     @cart_items =  current_customer.cart_items.all
     @sum = 0
   end
-  
+
   def create
     @cart_item = CartItem.new(cart_item_params)
     if curt_item = current_customer.cart_items.find_by(item_id: params[:cart_itm][:item_id])
@@ -15,10 +15,10 @@ class CartItemsController < ApplicationController
      redirect_to cart_items_path
     end
   end
-  
+
   def update
   end
-  
+
   def destroy
     @cart_item = CartItem.find_by(params[:id])
     @cart_item.destroy
@@ -31,9 +31,9 @@ class CartItemsController < ApplicationController
     flash[:complete]="カートを空にしました"
     redirect_to cart_items_path
   end
-  
+
   private
-  
+
   def cart_item_params
     params.require(:cart_item).permit(:quantity, :item_id)
   end
