@@ -14,6 +14,11 @@ Rails.application.routes.draw do
  devise_for :administrator, skip: [:registrations, :passwords] ,controllers: {
   sessions: "administrator/sessions"
  }
+
+  namespace :administrator do
+    resources :customers, only: [:index,:show,:edit,:update]
+  end
+
   namespace :administrator do
    resources :genres, only: [:index,:create,:edit,:update]
   end
