@@ -128,7 +128,7 @@ ActiveRecord::Schema.define(version: 2022_05_17_194759) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "custormer_id"
+    t.integer "customer_id"
     t.integer "send_money"
     t.integer "total_money"
     t.integer "cash_mean"

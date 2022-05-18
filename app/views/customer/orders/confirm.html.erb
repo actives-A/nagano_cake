@@ -32,8 +32,29 @@
     <tr>
       <td>800</td>
       <td><%= @total %></td>
-      <td><%= @total_all %></td>
+      <td><%=  @order.total_money %></td>
     </tr>
   </tbody>
 </table>
 
+<div>
+  <p>支払方法 | <%= Order.cash_means_i18n[@order.cash_mean] %></p>
+</div>
+
+<div>
+  <p>お届け先 | <%= @order.postal_code %><%= @order.address %></p>
+  <p><%= @order.send_name %></p>
+</div>
+
+<div>
+  <%= form_with model: @order,url: orders_path,method: :post do |f| %>
+    <%= f.hidden_field :customer_id %>
+    <%= f.hidden_field :send_name %>
+    <%= f.hidden_field :total_money %>
+    <%= f.hidden_field :cash_mean %>
+    <%= f.hidden_field :postal_code %>
+    <%= f.hidden_field :address %>
+    <%= f.hidden_field :order_status,:value=>0 %>
+    <%= f.submit %>
+  <% end %>
+</div>

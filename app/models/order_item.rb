@@ -6,6 +6,7 @@ class OrderItem < ApplicationRecord
     stay:0,
     wait_for_start:1,
     creating:2,
-    complete:3
+    delivery_preparation:3,
+    complete:4
   }
 end

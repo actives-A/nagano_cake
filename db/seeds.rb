@@ -5,9 +5,14 @@
 # )
 
 # (1..10).each do |i|
-#    # user=Customer.new(email: i.to_s.to_s+"@"+i.to_s*3,password: 'hugahuga', first_name: "sss",last_name: "sss")
-#    user=Customer.new(email: i.to_s.to_s+"@"+i.to_s*3,password: 'hugahuga')
-#    user.save!
+#     # user=Customer.new(email: i.to_s.to_s+"@"+i.to_s*3,password: 'hugahuga', first_name: "sss",last_name: "sss")
+#     user=Customer.new(email: i.to_s.to_s+"@"+i.to_s*3,password: 'hugahuga')
+#     user.save!
+# end
+
+# (1..10).each do |i|
+#   user=Customer.new(email: i.to_s.to_s+"@"+i.to_s*3,password: 'hugahuga')
+#   user.save!
 # end
 
 (1..10).each do |i|
@@ -15,12 +20,17 @@
 end
 
 
+# (1..10).each do |i|
+#   Item.create(genre_id: i,name: "test#{i}",explanation: "test#{i}",out_tax_price: i*100,sales_status: true)
+# end
+
 (1..10).each do |i|
-  CartItem.create(item_id: i,customer_id: i,quantity: i)
+  CartItem.create(item_id: i,customer_id: 1,quantity: i)
 end
 
-
-
+# (1..10).each do |i|
+#   Address.create(name: "ssss",customer_id: 1,postal_code: "ssssss",address: "1222333")
+# end
 
 
 # This file should contain all the record creation needed to seed the database with its default values.

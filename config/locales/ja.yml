@@ -4,4 +4,11 @@ ja:
       cash_mean:
         credit_card: "クレジットカード"
         transfer: "銀行振込"
+      puroduction_status:
+        stay: "入金待ち"
+        wait_for_start: "入金確認"
+        creating: "制作中"
+        delivery_preparation: "発送準備"
+        complete: "発送完了"
+
 

@@ -2,8 +2,6 @@ Rails.application.routes.draw do
   # ルートパスの仮置き
   root to: "customer/orders#new"
 
-
-
   scope module: :customer do
     resources :orders,only:[:new,:create]
     post "orders/confirm"
@@ -40,7 +38,6 @@ Rails.application.routes.draw do
 resources :customers, only: [:show, :edit, :update]
 get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
 patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
-
 
 
 
