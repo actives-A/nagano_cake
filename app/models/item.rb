@@ -5,11 +5,15 @@ class Item < ApplicationRecord
   validates :sales_status,presence: true
 
   has_one_attached:image
+  has_many :order_items
+  
 
+  # イメージが登録されなかった場合、デフォルトの画像をアタッチする
   def get_image
     self.image.attached? ? image : 'no_image.png'
   end
-  
+
+  # 税抜き価格から税込価格を生成する関数
   def with_tax_price
     (out_tax_price * 1.1).floor
   end

@@ -9,15 +9,13 @@
     </tr>
   </thead>
   <tbody>
-    <% if false %>
-    <% @order.cart_items.each do |order_item| %>
+    <% current_customer.cart_items.each do |cart_item| %>
     <tr>
-      <td><%= order_item.name %></td>
-      <td><%= order_item.intax_price %></td>
-      <td><%= order_item.quantity %></td>
-      <td><%= order_item.intax_price *order_item.quantyty %></td>
+      <td><%= cart_item.item.name %></td>
+      <td><%= cart_item.item.out_tax_price %></td>
+      <td><%= cart_item.quantity %></td>
+      <td><%= cart_item.subtotal %></td>
     </tr>
-    <% end %>
     <% end %>
   </tbody>
 </table>
@@ -33,8 +31,8 @@
   <tbody>
     <tr>
       <td>800</td>
-      <td></td>
-      <td></td>
+      <td><%= @total %></td>
+      <td><%= @total_all %></td>
     </tr>
   </tbody>
 </table>

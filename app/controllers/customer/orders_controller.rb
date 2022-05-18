@@ -26,10 +26,12 @@ class Customer::OrdersController < ApplicationController
       @order.address=params[:new_address]
       @order.send_name=params[:new_name]
     end
+    @total=current_customer.buynow_total
+    @total_all=@total+800
   end
 
   def create
-
+    
   end
 
   def complete

@@ -7,4 +7,13 @@ class Customer < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :addresses, dependent: :destroy
 
+  # 会員がカートに入れたアイテムの合計金額を算出する関数
+  def buynow_total
+    sum=0
+    cart_items.each do |cart_item|
+      sum+=cart_item.subtotal
+    end
+    sum
+  end
+
 end

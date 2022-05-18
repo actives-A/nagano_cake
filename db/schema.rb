@@ -13,8 +13,6 @@
 
 ActiveRecord::Schema.define(version: 2022_05_16_075559) do
 
-
-
   create_table "administrators", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -135,6 +133,18 @@ ActiveRecord::Schema.define(version: 2022_05_16_075559) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer "item_id"
+    t.integer "order_id"
+    t.integer "quantity"
+    t.integer "intax_price"
+    t.integer "puroduction_status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+
   create_table "orders", force: :cascade do |t|
     t.integer "custormer_id"
     t.integer "send_money"
@@ -144,10 +154,6 @@ ActiveRecord::Schema.define(version: 2022_05_16_075559) do
     t.string "postal_code"
     t.string "address"
     t.integer "order_status"
-  end
-  
-  create_table "genres", force: :cascade do |t|
-    t.string "genre_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
