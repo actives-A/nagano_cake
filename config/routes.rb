@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
 
+
+  scope module: :customer do
+    resources :orders,only:[:new,:create]
+    post "orders/confirm"
+    get "orders/complete"
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    delete 'cart_items/:id' => 'cart_items#all_destroy'
+    resources :addresses
+  end
+
+
  devise_for :administrator, skip: [:registrations, :passwords] ,controllers: {
   sessions: "administrator/sessions"
  }
@@ -21,7 +32,6 @@ Rails.application.routes.draw do
   sessions: 'customer/sessions'
   }
 
-resources :addresses
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -1,0 +1,7 @@
+ja:
+  enums:
+    order:
+      cash_mean:
+        credit_card: "クレジットカード"
+        transfer: "銀行振込"
+
