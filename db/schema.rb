@@ -11,7 +11,8 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
-ActiveRecord::Schema.define(version: 2022_05_17_194759) do
+ActiveRecord::Schema.define(version: 2022_05_16_075559) do
+
   create_table "administrators", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -85,6 +86,8 @@ ActiveRecord::Schema.define(version: 2022_05_17_194759) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+
+
   create_table "cart_items", force: :cascade do |t|
     t.integer "item_id"
     t.integer "customer_id"
@@ -92,6 +95,7 @@ ActiveRecord::Schema.define(version: 2022_05_17_194759) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
+
 
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false

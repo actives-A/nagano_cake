@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   # ルートパスの仮置き
   root to: "customer/orders#new"
 
+
+
   scope module: :customer do
     resources :orders,only:[:new,:create]
     post "orders/confirm"
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
     delete 'cart_items/all_destroy' => 'cart_items#all_destroy'
     resources :addresses
   end
+
 
 
  devise_for :administrator, skip: [:registrations, :passwords] ,controllers: {
@@ -32,6 +35,13 @@ Rails.application.routes.draw do
   registrations: "customer/registrations",
   sessions: 'customer/sessions'
   }
+
+
+resources :addresses
+resources :customers, only: [:show, :edit, :update]
+get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+patch '/customers/:id/withdrawal' => 'customaers#withdrawal', as: 'withdrawal'
+
 
 
 

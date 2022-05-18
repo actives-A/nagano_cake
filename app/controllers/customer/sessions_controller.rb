@@ -1,8 +1,17 @@
 # frozen_string_literal: true
 
 class Customer::SessionsController < Devise::SessionsController
+  before_action :customer_state, only: [:create]
   # before_action :configure_sign_in_params, only: [:create]
+  protected
 
+  def customer_state
+    @customer = Customer.find_by(email: params[:customer][:email])
+    return if !@customer
+    if @customer.vaild_password?(params[:customer][:password])
+        redirect_to new_customer_session_path && !@customer.is_deleted
+    end
+  end
   # GET /resource/sign_in
   # def new
   #   super
@@ -24,4 +33,5 @@ class Customer::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
 end
