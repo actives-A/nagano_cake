@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # ルートパスの仮置き
   root to: "customer/orders#new"
 
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
     get "orders/complete"
     resources :cart_items, only: [:index, :create, :update, :destroy]
     delete 'cart_items/all_destroy' => 'cart_items#all_destroy'
+    resources :items ,only:[:index,:show]
     resources :addresses
   end
 
@@ -35,9 +37,9 @@ Rails.application.routes.draw do
   }
 
 
-resources :customers, only: [:show, :edit, :update]
-get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
-patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
+  resources :customers, only: [:show, :edit, :update]
+  get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+  patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
 
 
 
