@@ -5,11 +5,11 @@ Rails.application.routes.draw do
 
 
   scope module: :customer do
-    resources :orders,only:[:new,:create]
+    resources :orders,only:[:new,:create, :index, :show]
     post "orders/confirm"
     get "orders/complete"
-    resources :cart_items, only: [:index, :create, :update, :destroy]
     delete 'cart_items/all_destroy' => 'cart_items#all_destroy'
+    resources :cart_items, only: [:index, :create, :update, :destroy]
     resources :addresses
   end
 
