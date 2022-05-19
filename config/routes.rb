@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+
+  namespace :administrator do
+    resources :orders ,only:[:index,:show,:update]
+    resources :order_items,only:[:update]
+  end
   # ルートパスの仮置き
   root to: "customer/orders#new"
-
-
 
   scope module: :customer do
     resources :orders,only:[:new,:create, :index, :show]
@@ -10,6 +13,7 @@ Rails.application.routes.draw do
     get "orders/complete"
     delete 'cart_items/all_destroy' => 'cart_items#all_destroy'
     resources :cart_items, only: [:index, :create, :update, :destroy]
+    resources :items ,only:[:index,:show]
     resources :addresses
   end
 
@@ -37,10 +41,9 @@ Rails.application.routes.draw do
   }
 
 
-resources :customers, only: [:show, :edit, :update]
-get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
-patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
-
+  resources :customers, only: [:show, :edit, :update]
+  get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+  patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
 
 
 

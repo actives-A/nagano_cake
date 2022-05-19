@@ -20,10 +20,14 @@ class Customer < ApplicationRecord
     end
     sum
   end
-  
+
    # is_deletedがfalseならtrueを返すようにしている
   def active_for_authentication?
     super && (is_deleted == false)
   end
 
+  # 苗字と名前を合体する関数
+  def full_name
+    self.first_name.to_s + ' ' + self.last_name.to_s
+  end
 end

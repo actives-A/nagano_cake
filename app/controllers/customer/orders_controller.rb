@@ -42,7 +42,7 @@ class Customer::OrdersController < ApplicationController
       order_item.item_id=cart_item.item.id
       order_item.order_id=order.id
       order_item.quantity=cart_item.quantity
-      order_item.intax_price=cart_item.subtotal
+      order_item.intax_price=cart_item.item.with_tax_price
       order_item.save
       cart_item.destroy
     end
@@ -52,6 +52,7 @@ class Customer::OrdersController < ApplicationController
 
   def complete
   end
+
 
   def index
     @orders = Order.all
@@ -67,6 +68,7 @@ class Customer::OrdersController < ApplicationController
     @total = @order.send_money + @order.total_money
 
   end
+
 
  private
 
