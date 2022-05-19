@@ -1,0 +1,22 @@
+<div class="container px-5 px-sm-0">
+  <h2>ジャンル検索</h2>
+    <% @genres.each do |genre| %>
+      <%= genre.genre_name %>
+    <% end %>
+  <div class="row">
+    <div class="col-md-8 offset-md-1">
+      <p>ようこそながのCAKEへ！</p>
+      <p>このサイトは、ケーキ販売のECサイトになります。</p>
+      <p>会員でない方も商品の閲覧はできますが、</p>
+      <p>購入には会員登録が必要になります。</p>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>新着商品</h2>
+      <%= @item.each do |item| %>
+       <%= item.name %>
+       <%= item.out_tax_price %>
+      <% end %>
+      <%= link_to "全ての商品を見る >", class: "btn btn-primary"%>
+    </div>
+  </div>
+</div>
