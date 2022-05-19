@@ -15,6 +15,7 @@ class Order < ApplicationRecord
   has_many :order_items
   belongs_to :customer
 
+
   # 注文に登録されているデータから宛名を生成する関数
   def address_display
     '〒' + postal_code.to_s + ' ' + address.to_s + ' ' + send_name.to_s
@@ -28,5 +29,6 @@ class Order < ApplicationRecord
     end
     sum
   end
+
 
 end

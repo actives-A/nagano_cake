@@ -32,6 +32,14 @@ end
 #   Address.create(name: "ssss",customer_id: 1,postal_code: "ssssss",address: "1222333")
 # end
 
+# (1..2).each do |i|
+  # Order.create(customer_id: i, created_at: "test#{i}",postal_code: "test#{i}",address: "test#{i}",send_name: "test#{i}",total_money: i*100, order_status: i)
+# end
+
+(1..2).each do |i|
+  OrderItem.create(item_id: 1, order_id: 45, quantity: i, intax_price: i*100, puroduction_status: 0)
+end
+
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).

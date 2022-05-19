@@ -53,6 +53,23 @@ class Customer::OrdersController < ApplicationController
   def complete
   end
 
+
+  def index
+    @orders = Order.all
+
+  end
+
+  def show
+    @order = Order.find(params[:id])
+    @order_item = @order.order_items
+    @order.send_money=800
+    # @total=current_customer.buynow_total
+    # @order.total_money=@total + @order.send_money
+    @total = @order.send_money + @order.total_money
+
+  end
+
+
  private
 
   def confirm_params
@@ -63,3 +80,6 @@ class Customer::OrdersController < ApplicationController
     params.require(:order).permit(:customer_id,:send_name,:total_money,:cash_mean,:postal_code,:address,:order_status)
   end
 end
+
+
+
