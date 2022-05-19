@@ -6,6 +6,7 @@ class Item < ApplicationRecord
 
   has_one_attached:image
   has_many :order_items
+  has_many :cart_items
   
 
   # イメージが登録されなかった場合、デフォルトの画像をアタッチする

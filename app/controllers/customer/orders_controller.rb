@@ -42,7 +42,7 @@ class Customer::OrdersController < ApplicationController
       order_item.item_id=cart_item.item.id
       order_item.order_id=order.id
       order_item.quantity=cart_item.quantity
-      order_item.intax_price=cart_item.subtotal
+      order_item.intax_price=cart_item.item.with_tax_price
       order_item.save
       cart_item.destroy
     end
@@ -52,6 +52,23 @@ class Customer::OrdersController < ApplicationController
 
   def complete
   end
+
+
+  def index
+    @orders = Order.all
+
+  end
+
+  def show
+    @order = Order.find(params[:id])
+    @order_item = @order.order_items
+    @order.send_money=800
+    # @total=current_customer.buynow_total
+    # @order.total_money=@total + @order.send_money
+    @total = @order.send_money + @order.total_money
+
+  end
+
 
  private
 
@@ -63,3 +80,6 @@ class Customer::OrdersController < ApplicationController
     params.require(:order).permit(:customer_id,:send_name,:total_money,:cash_mean,:postal_code,:address,:order_status)
   end
 end
+
+
+

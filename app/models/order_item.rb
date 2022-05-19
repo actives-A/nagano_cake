@@ -6,7 +6,12 @@ class OrderItem < ApplicationRecord
     stay:0,
     wait_for_start:1,
     creating:2,
-    delivery_preparation:3,
-    complete:4
+    complete:3
   }
+
+  # 小計を求めるメソッド
+  def subtotal
+    item.with_tax_price*quantity
+  end
+
 end

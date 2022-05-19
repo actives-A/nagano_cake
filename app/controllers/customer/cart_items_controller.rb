@@ -29,7 +29,7 @@ class Customer::CartItemsController < ApplicationController
     redirect_to cart_items_path
   end
 
-  def destroy_all
+  def all_destroy
     @cart_items = current_customer.cart_items
     @cart_items.destroy_all
     flash[:complete]="カートを空にしました"

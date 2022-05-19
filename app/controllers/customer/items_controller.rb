@@ -7,6 +7,7 @@ class Customer::ItemsController < ApplicationController
     @item=Item.find(params[:id])
   end
 
+
   def top
     @genres = Genre.all
     @item = Item.first(4)
@@ -14,4 +15,5 @@ class Customer::ItemsController < ApplicationController
 
   def about
   end
+
 end

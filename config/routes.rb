@@ -1,14 +1,22 @@
 Rails.application.routes.draw do
 
+
   root "customer/items#top"
   get "/about" => "customer/items#about"
+=======
+  namespace :administrator do
+    resources :orders ,only:[:index,:show,:update]
+    resources :order_items,only:[:update]
+  end
+ 
 
   scope module: :customer do
-    resources :orders,only:[:new,:create]
+    resources :orders,only:[:new,:create, :index, :show]
     post "orders/confirm"
     get "orders/complete"
-    resources :cart_items, only: [:index, :create, :update, :destroy]
     delete 'cart_items/all_destroy' => 'cart_items#all_destroy'
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    resources :items ,only:[:index,:show]
     resources :addresses
     resources :items, only: [:top]
   end
@@ -37,9 +45,9 @@ Rails.application.routes.draw do
   }
 
 
-resources :customers, only: [:show, :edit, :update]
-get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
-patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
+  resources :customers, only: [:show, :edit, :update]
+  get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+  patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
 
 
 

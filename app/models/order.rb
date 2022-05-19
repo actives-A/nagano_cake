@@ -13,4 +13,22 @@ class Order < ApplicationRecord
   }
 
   has_many :order_items
+  belongs_to :customer
+
+
+  # 注文に登録されているデータから宛名を生成する関数
+  def address_display
+    '〒' + postal_code.to_s + ' ' + address.to_s + ' ' + send_name.to_s
+  end
+
+  # 注文に紐つく注文商品の合計金額を算出する関数
+  def payment_total
+    sum=0
+    order_items.each do |order_item|
+      sum+=order_item.subtotal
+    end
+    sum
+  end
+
+
 end
