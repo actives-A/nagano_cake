@@ -17,8 +17,6 @@ Rails.application.routes.draw do
     resources :addresses
   end
 
-
-
  devise_for :administrator, skip: [:registrations, :passwords] ,controllers: {
   sessions: "administrator/sessions"
  }
@@ -35,15 +33,17 @@ Rails.application.routes.draw do
     resources :items ,only: [:index,:show,:new,:edit,:create,:update]
   end
 
-  devise_for :customers,controllers: {
+  devise_for :customer,controllers: {
   registrations: "customer/registrations",
   sessions: 'customer/sessions'
   }
 
 
-  resources :customers, only: [:show, :edit, :update]
-  get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
-  patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
+  scope module: :customer do
+    resources :customers, only: [:show, :edit, :update]
+    get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
+  end
 
 
 
