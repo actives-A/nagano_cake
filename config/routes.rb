@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
 
+
+  root "customer/items#top"
+  get "/about" => "customer/items#about"
+=======
   namespace :administrator do
     resources :orders ,only:[:index,:show,:update]
     resources :order_items,only:[:update]
   end
-  # ルートパスの仮置き
-  root to: "customer/orders#new"
+ 
 
   scope module: :customer do
     resources :orders,only:[:new,:create, :index, :show]
@@ -15,9 +18,8 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :create, :update, :destroy]
     resources :items ,only:[:index,:show]
     resources :addresses
+    resources :items, only: [:top]
   end
-
-
 
  devise_for :administrator, skip: [:registrations, :passwords] ,controllers: {
   sessions: "administrator/sessions"
@@ -35,15 +37,17 @@ Rails.application.routes.draw do
     resources :items ,only: [:index,:show,:new,:edit,:create,:update]
   end
 
-  devise_for :customers,controllers: {
+  devise_for :customer,controllers: {
   registrations: "customer/registrations",
   sessions: 'customer/sessions'
   }
 
 
-  resources :customers, only: [:show, :edit, :update]
-  get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
-  patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
+  scope module: :customer do
+    resources :customers, only: [:show, :edit, :update]
+    get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
+  end
 
 
 
