@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :administrator do
+    resources :orders ,only:[:index,:show,:update]
+    resources :order_items,only:[:update]
+  end
   # ルートパスの仮置き
   root to: "customer/orders#new"
 
