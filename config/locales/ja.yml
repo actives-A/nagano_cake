@@ -4,11 +4,19 @@ ja:
       cash_mean:
         credit_card: "クレジットカード"
         transfer: "銀行振込"
-      puroduction_status:
-        stay: "入金待ち"
-        wait_for_start: "入金確認"
-        creating: "制作中"
+      order_status:
+        payment_waiting: "入金待ち"
+        payment_clear: "入金確認"
+        in_production: "制作中"
         delivery_preparation: "発送準備"
-        complete: "発送完了"
+        delivery_complete: "発送完了"
+
+    order_item:
+      puroduction_status:
+        stay: "着手不可"
+        wait_for_start: "制作待ち"
+        creating: "制作中"
+        complete: "制作完了"
+
 
 
