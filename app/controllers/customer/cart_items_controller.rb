@@ -1,20 +1,27 @@
 class Customer::CartItemsController < ApplicationController
+  before_action :authenticate_customer!
+
   def index
     @cart_items =  current_customer.cart_items.all
     @sum = 0
   end
 
-  def create
+   def create
+    # binding.pry
     @cart_item = CartItem.new(cart_item_params)
-    if curt_item = current_customer.cart_items.find_by(item_id: params[:cart_itm][:item_id])
-       cart_item.number += params[:cart_item][:number].to_i cart_item.save
+    if cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
+      # binding.pry
+       cart_item.quantity += params[:cart_item][:quantity].to_i
+       cart_item.save
       flash[:notice] = "カートに商品を追加しました"
       redirect_to cart_items_path
-    elsif @cart_item.save
+    elsif
+     @cart_item.customer_id=current_customer.id
+     @cart_item.save
      flash[:notice] = "カートに商品を追加しました"
      redirect_to cart_items_path
     end
-  end
+   end
 
   def update
     @cart_item = CartItem.find(params[:id])
