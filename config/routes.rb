@@ -11,9 +11,9 @@ Rails.application.routes.draw do
 
 
   scope module: :customer do
+    get "orders/complete" => "customer/orders#complete"
     resources :orders,only:[:new,:create, :index, :show]
     post "orders/confirm"
-    get "orders/complete"
     delete 'cart_items/all_destroy' => 'cart_items#all_destroy'
     resources :cart_items, only: [:index, :create, :update, :destroy]
     resources :items ,only:[:index,:show]
