@@ -1,4 +1,6 @@
 class Customer::AddressesController < ApplicationController
+  before_action :authenticate_customer!
+
   def index
     @address = Address.new
     @addresses = Address.all
@@ -10,14 +12,14 @@ class Customer::AddressesController < ApplicationController
 
   def create
    @address = Address.new(address_params)
-   @address.save
-   if @address.save
-     flash[:complete]="新規配送先を登録しました"
-     redirect_to addresses_path
-   else
-    @address = Address.all
-    render :index
-   end
+   @address.customer_id = current_customer.id
+    if @address.save
+      flash[:complete]="新規配送先を登録しました"
+      redirect_to addresses_path
+    else
+      @address = Address.all
+      render :index
+    end
   end
 
 
