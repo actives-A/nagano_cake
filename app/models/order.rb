@@ -1,9 +1,11 @@
 class Order < ApplicationRecord
+  # 支払方法のステータス（cash_mean）の設定
   enum cash_mean:{
     credit_card:0,
     transfer:1
   }
 
+  # 注文ステータス（order_status）の設定
   enum order_status:{
     payment_waiting:0,
     payment_clear:1,

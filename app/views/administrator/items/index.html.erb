@@ -21,8 +21,16 @@
             </td>
             <td><%= item.out_tax_price %></td>
             <td><%= item.genre_id %></td>
-            <td><%= item.sales_status %></td>
+            <td id="sales_status<%= item.id %>" class="text-success">
+              <%= Item.sales_statuses_i18n[item.sales_status] %>
+            </td>
           </tr>
+          <script>
+            if(<%= item.sales_status == "stop_sales"%>){
+              var element = document.querySelector('#sales_status<%= item.id %>');
+              element.className = 'text-secondary';
+            }
+          </script>
           <% end %>
         </tbody>
       </table>
