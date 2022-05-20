@@ -38,7 +38,7 @@
         <td><%= order_item.intax_price %></td>
         <td><%= order_item.quantity %></td>
         <td><%= order_item.subtotal %></td>
-        <td><%= f.select :puroduction_status,OrderItem.puroduction_statuses.keys.map{|k| [I18n.t("enums.order_item.puroduction_status.#{k}"),k]},selected: order_item.puroduction_status %><%= f.submit "更新" %></td>
+        <td><%= f.select :puroduction_status,OrderItem.puroduction_statuses.keys.map{|k| [I18n.t("enums.order_item.puroduction_status.#{k}"),k]},selected: order_item.puroduction_status %><%= f.submit "更新",class: "btn btn-success" %></td>
       </tr>
     </tbody>
   </table>
