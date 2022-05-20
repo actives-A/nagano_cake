@@ -18,6 +18,11 @@ ja:
         creating: "制作中"
         complete: "制作完了"
 
+    item:
+      sales_status:
+        on_sales: "販売中"
+        stop_sales: "販売中止"
+
   activerecord:
     errors:
       messages:
