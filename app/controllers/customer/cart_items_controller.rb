@@ -6,7 +6,7 @@ class Customer::CartItemsController < ApplicationController
 
   def create
     @cart_item = CartItem.new(cart_item_params)
-    if curt_item = current_customer.cart_items.find_by(item_id: params[:cart_itm][:item_id])
+    if curt_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
        cart_item.number += params[:cart_item][:number].to_i cart_item.save
       flash[:notice] = "カートに商品を追加しました"
       redirect_to cart_items_path
