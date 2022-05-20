@@ -1,8 +1,11 @@
 class Customer::CartItemsController < ApplicationController
+  before_action :authenticate_customer!
+
   def index
     @cart_items =  current_customer.cart_items.all
     @sum = 0
   end
+
 
   def create
     # binding.pry
@@ -19,7 +22,7 @@ class Customer::CartItemsController < ApplicationController
      flash[:notice] = "カートに商品を追加しました"
      redirect_to cart_items_path
     end
-  end
+   end
 
   def update
     @cart_item = CartItem.find(params[:id])
