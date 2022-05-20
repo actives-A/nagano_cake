@@ -11,9 +11,9 @@ Rails.application.routes.draw do
 
 
   scope module: :customer do
+    get "orders/complete" => "orders#complete"
     resources :orders,only:[:new,:create, :index, :show]
     post "orders/confirm"
-    get "orders/complete"
     delete 'cart_items/all_destroy' => 'cart_items#all_destroy'
     resources :cart_items, only: [:index, :create, :update, :destroy]
     resources :items ,only:[:index,:show]
@@ -44,7 +44,7 @@ Rails.application.routes.draw do
 
 
   scope module: :customer do
-    resources :customers, only: [:show, :edit, :update]
+    resource :customers, only: [:show, :edit, :update]
     get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
   end
