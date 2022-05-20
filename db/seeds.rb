@@ -10,20 +10,16 @@
 #     user.save!
 # end
 
-Genre.create(genre_name: "cake")
+# Genre.create(genre_name: "cake")
 
-cakes=["長野いちごケーキ","長野ぶどうケーキ","長野りんごケーキ","長野いちご2ケーキ","長野いちご3ケーキ","長野いちご4ケーキ",]
-(1..10).each_with_index do |i,k|
-  Item.create(genre_id:1,name: "#{i}",explanation: "test#{i}",out_tax_price: i*100,sales_status: true)
+# cakes=["長野いちごケーキ","長野ぶどうケーキ","長野りんごケーキ","長野いちご2ケーキ","長野いちご3ケーキ","長野いちご4ケーキ",]
+# cakes.each_with_index do |i,k|
+#   Item.create(genre_id:1,name: "#{i}",explanation: "test#{i}",out_tax_price: rand(5)*100+100,sales_status: true)
+# end
+
+(31..41).each do |i|
+  CartItem.create(item_id: 83,customer_id: i,quantity: rand(5))
 end
-
-# (1..10).each do |i|
-#   Item.create(genre_id: i,name: "test#{i}",explanation: "test#{i}",out_tax_price: i*100,sales_status: true)
-# end
-
-# (1..10).each do |i|
-#   CartItem.create(item_id: i,customer_id: 1,quantity: i)
-# end
 
 # (1..10).each do |i|
 #   Address.create(name: "ssss",customer_id: 1,postal_code: "ssssss",address: "1222333")
