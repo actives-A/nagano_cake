@@ -6,7 +6,8 @@ class Customer::CartItemsController < ApplicationController
     @sum = 0
   end
 
-   def create
+
+  def create
     # binding.pry
     @cart_item = CartItem.new(cart_item_params)
     if cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])

@@ -7,7 +7,14 @@ class Item < ApplicationRecord
   has_one_attached:image
   has_many :order_items
   has_many :cart_items
-  
+  belongs_to :genre
+
+
+  # 販売ステータス(sales_status)の設定
+  enum sales_status:{
+    on_sales: true,
+    stop_sales: false
+  }
 
   # イメージが登録されなかった場合、デフォルトの画像をアタッチする
   def get_image
