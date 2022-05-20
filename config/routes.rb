@@ -3,12 +3,12 @@ Rails.application.routes.draw do
 
   root "customer/items#top"
   get "/about" => "customer/items#about"
-=======
+
   namespace :administrator do
     resources :orders ,only:[:index,:show,:update]
     resources :order_items,only:[:update]
   end
- 
+
 
   scope module: :customer do
     resources :orders,only:[:new,:create, :index, :show]
@@ -44,7 +44,7 @@ Rails.application.routes.draw do
 
 
   scope module: :customer do
-    resources :customers, only: [:show, :edit, :update]
+    resource :customers, only: [:show, :edit, :update]
     get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
   end
