@@ -1,14 +1,14 @@
 
-Administrator.create!(
-   email: 'admin@admin',
-   password: 'testtest'
-)
+# Administrator.create!(
+  # email: 'admin@admin',
+  # password: 'testtest'
+# )
 
 
-Administrator.create!(
-  email: 'admin@admin',
-  password: 'testtest'
-)
+# Administrator.create!(
+  # email: 'admin@admin',
+  # password: 'testtest'
+# )
 
 
  #(1..10).each do |i|
@@ -33,17 +33,14 @@ Administrator.create!(
 #   user.save!
 # end
 
-# (1..10).each do |i|
-#   Item.create(genre_id:1,name: "test#{i}",explanation: "test#{i}",out_tax_price: i*100,sales_status: true)
+
+# (1..2).each do |i|
+#   Item.create(genre_id: i,name: "test#{i}",explanation: "test#{i}",out_tax_price: i*100, sales_status: true, get_image=> "no_imag")
 # end
 
-
-# # (1..10).each do |i|
-# #   Item.create(genre_id: i,name: "test#{i}",explanation: "test#{i}",out_tax_price: i*100,sales_status: true)
-# # end
-
-# (1..10).each do |i|
-#   CartItem.create(item_id: i,customer_id: 1,quantity: i)
+(1..2).each do |i|
+  CartItem.create(item_id: i,customer_id: 1,quantity: i)
+ end
 
 # Genre.create(genre_name: "cake")
 
@@ -76,7 +73,7 @@ Administrator.create!(
 
 
 
-  
+
 
 # (1..2).each do |i|
 #   OrderItem.create(item_id: 1, order_id: 45, quantity: i, intax_price: i*100, puroduction_status: 0)

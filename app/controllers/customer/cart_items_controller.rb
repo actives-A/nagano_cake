@@ -1,6 +1,7 @@
 class Customer::CartItemsController < ApplicationController
   def index
     @cart_items =  current_customer.cart_items.all
+    # binding.pry
     @sum = 0
   end
 

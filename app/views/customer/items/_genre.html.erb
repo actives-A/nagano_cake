@@ -1,0 +1,10 @@
+<div class="card">
+  <h5 class="card-header text-center bg-white">ジャンル検索</h5>
+  <div class="h-75 card-body">
+    <% genres.each do |genre| %>
+     <div class="my-4">
+      <%= link_to genre.genre_name %>
+     </div>
+    <% end %>
+  </div>
+</div>
