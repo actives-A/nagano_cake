@@ -17,6 +17,8 @@ class Order < ApplicationRecord
   has_many :order_items
   belongs_to :customer
 
+  # 管理者の注文一覧の並べ替え機能に利用
+  scope :priority, -> { order(order_status: :asc,created_at: :asc) }
 
   # 注文に登録されているデータから宛名を生成する関数
   def address_display
@@ -32,5 +34,8 @@ class Order < ApplicationRecord
     sum
   end
 
-
+  # 注文に紐つく注文商品群の中から製作中より低いステータス注文商品を取得
+  def order_items_minimum_status
+    order_items.where("puroduction_status < 3").count
+  end
 end
