@@ -1,5 +1,8 @@
 class Customer::OrdersController < ApplicationController
   before_action:authenticate_customer!
+  # カートアイテムを1つ以上持っていないと注文できないようにするリダイレクト処理
+  before_action:ensure_cart_item ,only:[:new,:comfirm,:create]
+
   def new
     @order=Order.new()
   end
@@ -7,29 +10,46 @@ class Customer::OrdersController < ApplicationController
   def confirm
     # binding.pry
     @order=Order.new()
-    @order.customer_id=current_customer.id
+    # 入力内容の充足チェック#1(支払い方法)
+    if @order.cash_mean=confirm_params[:cash_mean]
+      # 入力内容の充足チェック#1(お届け先)
+      if send_place=confirm_params[:send_place]
+        if send_place=="ご自身の住所"
+          @order.postal_code=current_customer.postal_code
+          @order.address=current_customer.address
+          @order.send_name=current_customer.first_name
+        #   binding.pry
+        elsif send_place=="登録済住所から選択"
+          address=current_customer.addresses.find(confirm_params[:address_id])
+          @order.postal_code=address.postal_code
+          @order.address=address.address
+          @order.send_name=address.name
+        elsif send_place=="新しいお届け先"
+          # 新しいお届け先入力確認
+          unless (confirm_params[:new_postal_code]=="") || (confirm_params[:new_address]=="") || (confirm_params[:new_name]=="")
+            @order.postal_code=confirm_params[:new_postal_code]
+            @order.address=confirm_params[:new_address]
+            @order.send_name=confirm_params[:new_name]
+          else
+            flash[:alert] = "新しいお届け先を入力してください"
+            redirect_to new_order_path
+          end
+        end
+      else
+        redirect_to new_order_path
+        flash[:alert] = "支払い方法を選択してください"
+      end
+    else
+      redirect_to new_order_path
+      flash[:alert] = "お届け先を選択してください"
+    end
     # 送料800円
     @order.send_money=800
-    @order.cash_mean=confirm_params[:cash_mean]
-    # カートアイテムが完了してから正しい金額を代入する記述を行う
-    send_place=confirm_params[:send_place]
-    # binding.pry
-    if send_place=="ご自身の住所"
-      @order.postal_code=current_customer.postal_code
-      @order.address=current_customer.address
-      @order.send_name=current_customer.first_name
-    #   binding.pry
-    elsif send_place=="登録済住所から選択"
-      address=current_customer.addresses.find(confirm_params[:address_id])
-      @order.postal_code=address.postal_code
-      @order.address=address.address
-      @order.send_name=address.name
-    elsif send_place=="新しいお届け先"
-      @order.postal_code=confirm_params[:new_postal_code]
-      @order.address=confirm_params[:new_address]
-      @order.send_name=confirm_params[:new_name]
-    end
+    # 購入者のidを代入
+    @order.customer_id=current_customer.id
+    # 商品合計金額
     @total=current_customer.buynow_total
+    # 請求金額の代入
     @order.total_money=@total+800
   end
 
@@ -56,7 +76,6 @@ class Customer::OrdersController < ApplicationController
 
   def index
     @orders = Order.all
-
   end
 
   def show
@@ -78,6 +97,15 @@ class Customer::OrdersController < ApplicationController
 
   def create_params
     params.require(:order).permit(:customer_id,:send_name,:total_money,:cash_mean,:postal_code,:address,:order_status)
+  end
+
+  def ensure_cart_item
+    # binding.pry
+    unless current_customer.cart_items.count >=1
+      # binding.pry
+      flash[:alert]="商品をカートに入れてください"
+      redirect_to cart_items_path
+    end
   end
 end
 

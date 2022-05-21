@@ -1,6 +1,7 @@
 class Administrator::OrdersController < ApplicationController
   def index
-    @orders=Order.all
+    # 優先度の高い順に表示する（order_statusと注文日）
+    @orders=Order.priority.page(params[:page])
   end
 
   def show
@@ -11,6 +12,11 @@ class Administrator::OrdersController < ApplicationController
     # binding.pry
     order=Order.find(params[:id])
     if order.update(order_status_update_params)
+      if order.order_status=="payment_clear"
+        order.order_items.each do |order_item|
+          order_item.update(puroduction_status: "wait_for_start")
+        end
+      end
       redirect_to administrator_order_path(order)
     end
   end

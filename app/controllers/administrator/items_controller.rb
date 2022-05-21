@@ -1,6 +1,6 @@
 class Administrator::ItemsController < ApplicationController
   def index
-    @items=Item.all
+    @items=Item.page(params[:page])
   end
 
   def show
@@ -16,7 +16,7 @@ class Administrator::ItemsController < ApplicationController
   end
 
   def create
-    # binding.pry
+    binding.pry
     @item=Item.new(item_params)
     # if params[:sales_status]=="true"
     #   @item.sales_status=true

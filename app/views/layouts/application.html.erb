@@ -36,7 +36,9 @@
                 <P>ようこそ<%=  %>さん！</P>
 
       <li>
+
         <%= link_to "マイページ", customers_path(current_customer), class:"nav-link text-white" %>
+
       </li>
       <li>
         <%= link_to "商品一覧", items_path , class:"nav-link text-white"%>
@@ -61,11 +63,18 @@
         <%= link_to "ログイン", new_customer_session_path %>
       </li>
     <% end %>
+
                </ul>
             </div>
          </div>
       </nav>
     </header>
+
+
+  </header>
+    <% flash.each do |type,message| %>
+      <%= message %>
+    <% end %>
 
     <%= yield %>
   </body>

@@ -1,5 +1,6 @@
 
 # Administrator.create!(
+
   # email: 'admin@admin',
   # password: 'testtest'
 # )
@@ -8,6 +9,10 @@
 # Administrator.create!(
   # email: 'admin@admin',
   # password: 'testtest'
+
+#   email: 'admin@admin',
+#   password: 'testtest'
+
 # )
 
 
@@ -49,9 +54,10 @@
 #   Item.create(genre_id:1,name: "#{i}",explanation: "test#{i}",out_tax_price: rand(5)*100+100,sales_status: true)
 # end
 
-# (1..30).each do |i|
-#   CartItem.create(item_id: rand(6),customer_id: rand(10),quantity: rand(5))
-# end
+(1..30).each do |i|
+  order=Order.create(customer_id: 1,postal_code: "5000000",address: "兵庫県西宮市甲子園町１−８２",send_name: "test#{i}",total_money: i*100, order_status: rand(4),created_at: Date.current-rand(5).day)
+  OrderItem.create(item_id: 1, order_id: order.id, quantity: i, intax_price: Item.find(1).with_tax_price, puroduction_status: rand(4))
+end
 
 # (1..10).each do |i|
 #   Address.create(name: "親戚の家",customer_id: rand(10),postal_code: "500-0000",address: "兵庫県西宮市甲子園町１−８２")
