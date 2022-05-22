@@ -22,10 +22,10 @@ class Customer::CustomersController < ApplicationController
   end
 
   def update
-    @customer =  Customer.find(params[:id])
+    @customer =  current_customer
     if @customer.update(customer_params)
      flash[:complete]="編集を変更しました"
-     redirect_to customer_path(@customer.id)
+     redirect_to customers_path(current_customer)
     else
      render :edit
     end
