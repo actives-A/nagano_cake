@@ -35,6 +35,8 @@
      <%= f.text_field :email, autofocus: true,placeholder: "samplie@example.com" ,autocomplete: "email"%>
    </div>
 
+
+
 <div class="row">
   <div class= "col-sm-5 ">
     <%= f.submit "編集内容を保存", class: "btn btn-success " %>
@@ -44,7 +46,7 @@
   </div>
 </div>
   <% end %>
- </div>
+</div>
 
   <div class="field form-group col-xs-12">
     <%= f.label :"名前" , class: "col-sm-2 control-label"%>
@@ -85,5 +87,4 @@
   <%= link_to "退会する", unsubscribe_path(current_customer), class: "btn btn-danger"  %>
 <% end %>
 
-</div>
 </div>
