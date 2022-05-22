@@ -23,7 +23,7 @@ class Customer::CartItemsController < ApplicationController
      flash[:notice] = "カートに商品を追加しました"
      redirect_to cart_items_path
     end
-   end
+  end
 
   def update
     @cart_item = CartItem.find(params[:id])

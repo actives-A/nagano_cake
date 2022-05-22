@@ -12,28 +12,18 @@
 
 
 
-    <body class="d-flex flex-column vh-100">
-    <header class="shadow-sm">
-      <nav class="navbar navbar-expand-lg  bg-secondary p-5">
-
-        <nav class="navbar navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand">Navbar</a>
-    <form class="d-flex">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
+  <body class="d-flex flex-column vh-100">
+   <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg  bg-secondary p-">
         <div class="container">
           <%= link_to "NaganoCake", root_path, class: 'text-white navbar-brand' %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-            <div class="navbar-collapse collapse show" id="navbarNavDropdown">
-              <ul class="navbar-nav ml-auto">
-                <% if customer_signed_in? %>
-                <P>ようこそ<%=  %>さん！</P>
+          <div class="navbar-collapse collapse show" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <% if customer_signed_in? %>
+               <div><P>ようこそ<%= current_customer.first_name  %>さん！</P></div>
 
       <li>
 
@@ -67,6 +57,10 @@
                </ul>
             </div>
          </div>
+           <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
       </nav>
     </header>
 
@@ -77,5 +71,6 @@
     <% end %>
 
     <%= yield %>
-  </body>
+       </body>
+
 </html>

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col mt-3">
     <h2 class="mb-5">新規会員登録</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -60,7 +60,7 @@
     <%= f.submit "新規登録", class: "btn btn-success col-3 offset-3 " %>
   </div>
  <% end %>
-    <div class="row" >
+    <div class="row " >
      <h3>既に登録済みの方</h3>
     </div>
     <div class="ml-3 mt-3"><%=link_to "こちら", new_customer_session_path %>
@@ -72,78 +72,3 @@
     </div>
   </div>
 </div>
-         <div class="col-sm-5">
-    <h2 class="bg-light text-dark text-center">新規会員登録</h2>
-    </div>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-
-    <div class="field form-group">
-      <%= f.label :"名前" , class: "col-sm-2 control-label"%>
-      <%= f.label :"（姓）" , class: "col-sm-1 control-label"%>
-      <%= f.text_field :last_name,placeholder: "山田"%>
-      <%= f.label :"（名）", class: "col-sm-1 control-label" %>
-      <%= f.text_field :first_name,placeholder: "太郎" %>
-    </div>
-
-    <div class="field form-group">
-      <%= f.label :"フリガナ" , class: "col-sm-2 control-label"%>
-      <%= f.label :"(セイ)", class: "col-sm-1 control-label"%>
-      <%= f.text_field :kana_last_name,placeholder: "ヤマダ" %>
-      <%= f.label :"(メイ)", class: "col-sm-1 control-label" %>
-      <%= f.text_field :kana_first_name,placeholder: "タロウ" %>
-    </div>
-
-    <div class="field form-group ">
-      <%= f.label :"メールアドレス", class: "col-sm-3 control-label" %>
-      <%= f.text_field :email, autofocus: true,placeholder: "samplie@example.com" ,autocomplete: "email" %>
-    </div>
-
-    <div class="field form-group">
-      <%= f.label :"郵便番号（ハイフンなし）", class: "col-sm-3 control-label" %>
-      <%= f.text_field :postal_code,placeholder: "0000000"  %>
-    </div>
-
-    <div class="field form-group">
-      <%= f.label :"住所", class: "col-sm-3 control-label" %>
-      <%= f.text_field :address,placeholder: "東京都渋谷区代々木神園町0-0", class: "col-sm-7 control-label"  %>
-    </div>
-
-    <div class="field form-group">
-      <%= f.label :"電話番号（ハイフンなし）" , class: "col-sm-3 control-label" %>
-      <%= f.text_field :phone_namber,placeholder: "00000000000" %>
-    </div>
-
-    <div class="field form-group ">
-      <%= f.label :"パスワード", class: "col-sm-3 control-label" %>
-      <% if @minimum_password_length %>
-      <%= @minimum_password_length %>文字以上
-      <% end %>
-      <%= f.password_field :password, autocomplete: "new-password" %>
-    </div>
-
-    <div class="field form-group ">
-      <%= f.label :"パスワード（確認用）", class: "col-sm-3 control-label" %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
-   </div>
-  </div>
-
-  <div class="row">
-  <div class="col-sm-5 text-right">
-    <%= f.submit "新規登録", class: "btn btn-success col-sm-5 control-label" %>
-  </div>
-  </div>
- <% end %>
- <div class="row">
-  <div class="col-sm-5">
-     <h2 class="bg-light text-dark text-center">既に登録済みの方</h2>
-     <div class ="ml-5">
-       <%=link_to "こちら", new_customer_session_path %>
-       <span>からログインしてください。</span>
-     </div>
-  </div>
- </div>
-</div>
-</div>
-

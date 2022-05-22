@@ -9,6 +9,7 @@ class OrderItem < ApplicationRecord
     complete:3
   }
 
+
   # 小計を求めるメソッド
   def subtotal
     item.with_tax_price*quantity
