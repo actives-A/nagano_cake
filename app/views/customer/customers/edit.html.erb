@@ -1,14 +1,13 @@
 <div class="container">
-<div class="row mt-3 mb-5 ml-5">
- <h2 class="bg-light text-dark text-center">会員情報編集</h2>
-</div>
-
- <%= form_with model: @customer, url: customers_path, method: :patch do |f| %>
-   <div class="field form-group row">
-     <%= f.label :"氏名" , class: "col-3"%>
-     <%= f.text_field :last_name,placeholder: "山田", class: "col-2 control-label mr-3"%>
-     <%= f.text_field :first_name,placeholder: "太郎", class: "col-2 control-label"%>
-   </div>
+ <div class="row">
+  <div class="col mt-5">
+  <h2 class="bg-light text-dark text-center col-3 mt-5">会員情報編集</h2>
+    <%= form_with model: @customer, url: customers_path, method: :patch do |f| %>
+     <div class="field form-group row mt-5">
+      <%= f.label :"氏名" , class: "col-3"%>
+      <%= f.text_field :last_name,placeholder: "山田", class: "col-2 control-label mr-3"%>
+      <%= f.text_field :first_name,placeholder: "太郎", class: "col-2 control-label"%>
+     </div>
 
    <div class="field form-group row">
      <%= f.label :"フリガナ" , class: "col-3"%>
@@ -35,16 +34,14 @@
      <%= f.label :"メールアドレス", class: "col-3" %>
      <%= f.text_field :email, autofocus: true,placeholder: "samplie@example.com" ,autocomplete: "email", class: "col-2 control-label"%>
    </div>
-
-
-  <div class="row">
-    <div class= "col-6 text-right ">
+   <div class="row mt-5 mb-5">
+    <div class= "col-6 text-right mt-5">
       <%= f.submit "編集内容を保存", class: "btn btn-success col-6 " %>
     </div>
-    <div class= "col-3 offset-1">
+    <div class= "col-3 offset-1 mt-5 ">
       <%= link_to "退会する", unsubscribe_path(current_customer), class: "btn btn-danger"  %>
     </div>
-  </div>
+   </div>
    <% end %>
   </div>
  </div>

@@ -5,72 +5,41 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <body>
+    <header class="shadow-sm">
+     <nav class="navbar navbar-expand-lg  bg-secondary ">
+      <div class="container">
+        <%= link_to "NaganoCake", root_path, class: 'text-white navbar-brand' %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <% if customer_signed_in? %>
+          <%=render 'layouts/customer_header' %>
+        <% elsif administrator_signed_in? %>
+          <%=render 'layouts/administrator_header' %>
+        <% else %>
+          <%=render 'layouts/guest_header' %>
+        <% end %>
+      </div>
+     </nav>
+   </header>
 
-  <body class="d-flex flex-column vh-100">
-   <header class="shadow-sm">
-      <nav class="navbar navbar-expand-lg  bg-secondary p-3">
+  <% flash.each do |type,message| %>
+     <%= message %>
+   <% end %>
+  <%= yield %>
 
-        <div class="container">
-          <%= link_to "NaganoCake", root_path, class: 'text-white navbar-brand' %>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="navbar-collapse collapse show" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
-              <% if customer_signed_in? %>
-               <div><P>ようこそ<%= current_customer.first_name  %>さん！</P></div>
-
-
-      <li>
-
-        <%= link_to "マイページ", customers_path(current_customer), class:"nav-link text-white" %>
-
-      </li>
-      <li>
-        <%= link_to "商品一覧", items_path , class:"nav-link text-white"%>
-      </li>
-      <li>
-        <%= link_to "カート", cart_items_path , class:"nav-link text-white"%>
-      </li>
-      <li>
-        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"nav-link text-white" %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "About", about_path %>
-      </li>
-      <li>
-        <%= link_to "商品一覧", items_path %>
-      </li>
-      <li>
-        <%= link_to "新規登録", new_customer_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_customer_session_path %>
-      </li>
-    <% end %>
-
-               </ul>
-            </div>
-         </div>
-           <form class="d-flex">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-      </nav>
-    </header>
-
-
-  </header>
-    <% flash.each do |type,message| %>
-      <%= message %>
-    <% end %>
-
-    <%= yield %>
-       </body>
-
+  <footer class="bg-secondary fixed-bottom">
+  <div class='container'>
+  	<div class='row'>
+    	<div class='mx-auto mt-3'>
+    		<p>CopyRight Infratop.inc</p>
+    	</div>
+    </div>
+  </div>
+</footer>
+ </body>
 </html>
