@@ -1,6 +1,6 @@
 class Customer::CustomersController < ApplicationController
   def show
-    @customer = Customer.find(current_customer.id)
+    @customer = current_customer
   end
 
   def unsubscribe
@@ -17,8 +17,8 @@ class Customer::CustomersController < ApplicationController
   end
 
   def edit
-     @customer = current_customer
 
+    @customer = current_customer
   end
 
   def update
