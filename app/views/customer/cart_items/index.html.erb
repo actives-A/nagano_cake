@@ -3,6 +3,7 @@
   <div class="col-sm-4 mt-3">
     <h2 class="bg-light text-dark text-center">ショッピングカート</h2>
   </div>
+
   <div class="col-sm-8 text-right mt-5">
     <%=link_to "カートを空にする", cart_items_all_destroy_path , method: :delete, "data-confirm" => "本当に削除してよろしいでしょうか?", class: "btn btn-danger" %>
   </div>
@@ -30,7 +31,7 @@
           <td class="text-center">
           <%= form_with model: cart_item, url: cart_item_path(id: cart_item.id), method: :patch do |f| %>
             <%= f.hidden_field :quantity, min: 1, max:100 %>
-            <%= f.select :quantity, *[1..10] %>
+            <%= f.select :quantity, *[1..30] %>
             <%= f.submit "変更" , class: "btn btn-success ml-3"%>
           <% end %>
           </td>

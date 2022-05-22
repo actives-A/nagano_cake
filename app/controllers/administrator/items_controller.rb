@@ -16,16 +16,15 @@ class Administrator::ItemsController < ApplicationController
   end
 
   def create
-    binding.pry
+    # binding.pry
     @item=Item.new(item_params)
-    # if params[:sales_status]=="true"
-    #   @item.sales_status=true
-    # else
-    #   @item.sales_status=false
-    # end
+
 
     if @item.save
       redirect_to  administrator_items_path
+    else
+      flash[:alert]="全ての項目を入力してください"
+      redirect_to new_administrator_item_path
     end
   end
 
