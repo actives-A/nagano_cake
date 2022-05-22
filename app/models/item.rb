@@ -5,10 +5,9 @@ class Item < ApplicationRecord
   validates :sales_status,presence: true
 
   has_one_attached:image
-  has_many :order_items
+  has_many :order_items, dependent: :destroy
   has_many :cart_items
   belongs_to :genre
-
 
   # 販売ステータス(sales_status)の設定
   enum sales_status:{

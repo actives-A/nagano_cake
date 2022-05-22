@@ -1,0 +1,38 @@
+<!--商品新規登録画面と編集画面で使用-->
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td><%= f.label :image,"商品画像" %></td>
+            <td><%= f.file_field :image %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :name ,"商品名"%></td>
+            <td><%= f.text_field :name ,style: "width:90%",placeholder: "商品名" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :explanation, "商品説明"%></td>
+            <td><%= f.text_area :explanation ,style: "width:90%",placeholder: "ここに説明文を記述します"%></td>
+          </tr>
+          <tr>
+            <td><%= f.label :genre_id,"ジャンル" %></td>
+            <td><%= f.select :genre_id,genre_name_lists, { include_blank: '--選択してください--'},style: "width:90%"%></td>
+          </tr>
+          <tr>
+            <td><%= f.label :out_tax_price,"税抜き価格" %></td>
+            <td><%= f.number_field :out_tax_price ,style: "width:90%",placeholder: "1000" %>円</td>
+          </tr>
+          <tr>
+            <td>販売ステータス</td>
+            <td>
+              <span class="mx-4">
+                <%= f.radio_button :sales_status, "on_sales" %>
+                <%= f.label :sales_status,"販売中" %>
+              </span>
+              <span>
+                <%= f.radio_button :sales_status, "stop_sales" %>
+                <%= f.label :sales_status,"販売停止中" %>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
