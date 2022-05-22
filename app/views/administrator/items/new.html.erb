@@ -1,51 +1,12 @@
-
 <div class="container">
   <h4><span class="bg-light">商品新規登録</span></h4>
   <div class="row">
-    <div class="col-sm-3">
+    <div class="col-sm-6 mx-auto">
       <%= form_with model: @item ,url: administrator_items_path,method: :post do |f| %>
-      <table>
-        <tbody>
-          <tr>
-            <td><%= f.label :image %></td>
-            <td><%= f.file_field :image %></td>
-          </tr>
-          <tr>
-            <td><%= f.label :name %></td>
-            <td><%= f.text_field :name %></td>
-          </tr>
-          <tr>
-            <td><%= f.label :explanation %></td>
-            <td><%= f.text_area :explanation %></td>
-          </tr>
-          <tr>
-            <td><%= f.label :genre_id,"ジャンル" %></td>
-            <td><%= f.select :genre_id,[1,2] %></td>
-          </tr>
-          <tr>
-            <td><%= f.label :out_tax_price,"税抜き価格" %></td>
-            <td><%= f.number_field :out_tax_price %></td>
-          </tr>
-          <tr>
-            <td>販売ステータス</td>
-            <td>
-              <div>
-                <%= f.label :sales_status,"販売中" %>
-                <%= f.radio_button :sales_status, "on_sales" %>
-              </div>
-              <div>
-                <%= f.label :sales_status,"販売中止" %>
-                <%= f.radio_button :sales_status, "stop_sales" %>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div>
-        <%= f.submit "新規登録",class: "btn btn-success" %>
-      </div>
-
+        <%= render partial: "administrator/items/form", locals: { f: f } %>
+        <div class="text-center">
+          <%= f.submit "新規登録",class: "btn btn-success" %>
+        </div>
       <% end %>
    </div>
   </div>

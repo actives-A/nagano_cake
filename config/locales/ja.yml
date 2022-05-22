@@ -21,7 +21,7 @@ ja:
     item:
       sales_status:
         on_sales: "販売中"
-        stop_sales: "販売中止"
+        stop_sales: "販売停止中"
 
   activerecord:
     errors:
