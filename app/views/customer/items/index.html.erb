@@ -14,7 +14,7 @@
              <p><%= link_to item_path(item) do %>
              <%= item.name %>
              <% end %><br>
-             ￥<%= (item.out_tax_price* 1.1).to_i %>
+             <%= number_to_currency(item.out_tax_price* 1.1) %>
             </p>
           </div>
         <% end %>

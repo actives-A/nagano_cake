@@ -1,5 +1,5 @@
 # 管理者を1人作成
-Administrators.create!(
+Administrator.create!(
     email: 'admin@admin',
     password: 'testtest'
 )
@@ -27,4 +27,5 @@ end
 (1..10).each do |i|
   Address.create(name: "親戚の家",customer_id: rand(1..10),postal_code: "500-000#{i}",address: "兵庫県西宮市甲子園町１−８２-#{i}")
 end
+
 
