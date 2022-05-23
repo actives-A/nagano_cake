@@ -9,6 +9,9 @@ class Item < ApplicationRecord
   has_many :cart_items
   belongs_to :genre
 
+  # 販売中の商品のみ表示するスコープ
+  scope :is_sales,-> {where(sales_status: true)}
+
   # 販売ステータス(sales_status)の設定
   enum sales_status:{
     on_sales: true,
