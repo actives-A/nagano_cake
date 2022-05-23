@@ -1,4 +1,5 @@
 class Administrator::OrdersController < ApplicationController
+  before_action :authenticate_administrator!
   def index
     # 優先度の高い順に表示する（order_statusと注文日）
     @orders=Order.priority.page(params[:page])
