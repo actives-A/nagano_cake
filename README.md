@@ -34,6 +34,9 @@ _管理者側_
 # Gem  
  ・devise  
  ・kaminari  
+ ・pry-byebug  
+ ・enum_help  
+ ・image_processing  
   
 # 制作期間  
 　2022年5月11日～2022年5月29日  
