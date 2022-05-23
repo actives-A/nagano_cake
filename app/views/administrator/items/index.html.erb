@@ -20,7 +20,7 @@
               <%= link_to item.name,administrator_item_path(item) %>
             </td>
             <td><%= item.out_tax_price %></td>
-            <td><%= item.genre_id %></td>
+            <td><%= item.genre.genre_name %></td>
             <td id="sales_status<%= item.id %>" class="text-success">
               <%= Item.sales_statuses_i18n[item.sales_status] %>
             </td>
