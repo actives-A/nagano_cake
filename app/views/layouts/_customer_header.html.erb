@@ -1,23 +1,23 @@
-  <div class="navbar-collapse collapse show" id="navbarNavDropdown">
-    <div class="col-5 text-right text-white ">ようこそ<%= current_customer.first_name  %>さん！</div>
-    <ul class="navbar-nav col-7 d-block text-right ">
-      <li class="d-inline-block">
-         <%= link_to "マイページ", customers_path, class:"nav-link text-white" %>
-      </li>
-      <li class="d-inline-block">
-         <%= link_to "商品一覧", items_path , class:"nav-link text-white"%>
-      </li class="d-inline-block">
-      <li class="d-inline-block">
-        <%= link_to "カート", cart_items_path , class:"nav-link text-white"%>
-      </li>
-      <li class="d-inline-block">
-        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"nav-link text-white" %>
-      </li>
-      <div class="form-inline d-block text-right">
-        <form>
-          <input class="form-control"  type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-light" type="submit"><i class="fas fa-search"></i></button>
-        </form>
-      </div>
-    </ul>
-  </div>
+<div class="navbar-collapse collapse show" id="navbarNavDropdown">
+  <div class="col-lg-5 text-right text-white ">ようこそ<%= current_customer.first_name  %>さん！</div>
+  <ul class="navbar-nav col-lg-7 d-block text-right ">
+    <li class="d-inline-block">
+       <%= link_to "マイページ", customers_path, class:"nav-link text-white" %>
+    </li>
+    <li class="d-inline-block">
+       <%= link_to "商品一覧", items_path , class:"nav-link text-white"%>
+    </li class="d-inline-block">
+    <li class="d-inline-block">
+      <%= link_to "カート", cart_items_path , class:"nav-link text-white"%>
+    </li>
+    <li class="d-inline-block">
+      <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"nav-link text-white" %>
+    </li>
+    <div class="form-inline d-block text-right">
+      <form>
+        <input class="form-control"  type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-light" type="submit"><i class="fas fa-search"></i></button>
+      </form>
+    </div>
+  </ul>
+</div>
