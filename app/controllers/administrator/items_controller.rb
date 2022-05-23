@@ -1,4 +1,6 @@
 class Administrator::ItemsController < ApplicationController
+  before_action :authenticate_administrator!
+
   def index
     @items=Item.page(params[:page])
   end
@@ -18,10 +20,8 @@ class Administrator::ItemsController < ApplicationController
   def create
     # binding.pry
     @item=Item.new(item_params)
-
-
     if @item.save
-      redirect_to  administrator_items_path
+      redirect_to  administrator_item_path(@item)
     else
       flash[:alert]="全ての項目を入力してください"
       redirect_to new_administrator_item_path

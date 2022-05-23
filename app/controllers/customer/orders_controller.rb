@@ -17,7 +17,7 @@ class Customer::OrdersController < ApplicationController
         if send_place=="ご自身の住所"
           @order.postal_code=current_customer.postal_code
           @order.address=current_customer.address
-          @order.send_name=current_customer.first_name
+          @order.send_name=current_customer.full_name
         #   binding.pry
         elsif send_place=="登録済住所から選択"
           address=current_customer.addresses.find(confirm_params[:address_id])
