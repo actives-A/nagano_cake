@@ -16,7 +16,7 @@
           <tr>
             <td style="width: 30%">
               <%= link_to administrator_order_path(order),method: :get do %>
-                <%= order.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+                <%= order.created_at.to_s(:datetime_jp) %>
               <% end %>
             </td>
             <td>
