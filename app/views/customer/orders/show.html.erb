@@ -1,3 +1,4 @@
+<div class="container">
 <div class="row px-5 mx-5 mb-5 mt-5">
   <h2 class="col-3 bg-light text-dark text-center ">注文履歴詳細</h2>
 </div>
@@ -48,6 +49,7 @@
    </div>
 </div>
 
+<div class="row">
 <div class="col-md-8 mt-3 ml-3">
   <h3>注文内容</h3>
   <table class="table table-bordered">
@@ -59,16 +61,18 @@
       <th>小計</th>
      </tr>
    </thead>
-   <% @order_item.each do |order_item| %>
    <tbody>
+    <% @order_item.each do |order_item| %>
      <tr>
        <td><%= order_item.item.name %></td>
        <td><%= number_to_currency(order_item.item.out_tax_price) %></td>
        <td><%= order_item.quantity %></td>
        <td><%= number_to_currency(order_item.intax_price)%></td>
       </tr>
-    </tbody>
     <% end %>
+    </tbody>
+    </table>
    </div>
   </div>
-
+</div>
+</div>
