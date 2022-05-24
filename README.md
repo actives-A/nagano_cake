@@ -36,7 +36,7 @@ _管理者側_
  ・kaminari  
  ・pry-byebug  
  ・enum_help  
- ・image_processing 
+ ・image_processing   
  ・jquery-rails  
   
 # 制作期間  
