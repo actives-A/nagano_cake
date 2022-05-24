@@ -583,3 +583,9 @@ a.text-green:hover, a.text-green:focus {
 .pagination {
   justify-content: center;
 }
+
+
+* { 
+ font-family: 'Macondo', cursive; 
+}
+
