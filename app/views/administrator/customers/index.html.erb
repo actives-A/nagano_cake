@@ -20,7 +20,15 @@
                 <% end %>
             </th>
             <th><%= customer.email %></th>
-            <th><%= customer.is_deleted %></th>
+            <th id="is_deleted<%= customer.id %>" class="text-success">
+              <%= I18n.t("enums.customer.is_deleted.#{customer.is_deleted}") %>
+              <script>
+                  if(<%= customer.is_deleted%>){
+                  var element = document.querySelector('#is_deleted<%= customer.id %>');
+                  element.className = 'text-secondary';
+                }
+              </script>
+              </th>
           </tr>
           <% end %>
         </tbody>

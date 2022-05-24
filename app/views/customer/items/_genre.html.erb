@@ -3,7 +3,7 @@
   <div class="h-75 card-body">
     <% genres.each do |genre| %>
      <div class="my-4">
-      <%= link_to do %>
+      <%= link_to genre_path(genre.id) do %>
       <p class="text-dark"><%= genre.genre_name %></p>
       <% end %>
      </div>
