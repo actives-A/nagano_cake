@@ -35,7 +35,7 @@
        </tr>
        <tr>
          <th class="bg-light">会員ステータス</th>
-         <td><%= @customer.is_deleted %><</td>
+         <td><%= I18n.t("enums.customer.is_deleted.#{@customer.is_deleted}") %></td>
        </tr>
       </tbody>
      </table>

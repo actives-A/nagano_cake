@@ -40,7 +40,7 @@
       <% @item.each do |item| %>
         <div class="my-auto mx-auto">
           <%= link_to item_path(item) do %>
-            <%= image_tag item.get_image, size: "200x200", class: "mx-auto d-block" %>
+            <%= image_tag item.get_image, size: "210x140", class: "mx-auto d-block" %>
           <% end %>
           <%= link_to item_path(item) do %>
             <p class="text-secondary mt-1 mb-0"><%= item.name %></p>
