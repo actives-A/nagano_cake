@@ -11,8 +11,11 @@ Rails.application.routes.draw do
     post "orders/confirm"
     delete 'cart_items/all_destroy' => 'cart_items#all_destroy'
     resources :cart_items, only: [:index, :create, :update, :destroy]
-    resources :items ,only:[:index,:show]
-    resources :items, only: [:top]
+    resources :items ,only:[:index,:show] do
+      collection do
+        post :search_items
+      end
+    end
     resources :genres, only:[:show]
     resource :customers, only: [:show, :edit, :update]
     get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
