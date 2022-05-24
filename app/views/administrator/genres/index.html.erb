@@ -2,14 +2,17 @@
   <div class="row justify-content-start">
     <div class="col-5 mt-5 bg-light text-dark text-center">
       <h2>ジャンル一覧・追加</h2>
+      <div class="errors">
+       <%= render "error", genre: @genre %>
+      </div>
     </div>
   </div>
   <div class="row justify-content-start">
     <div class="form-inline my-5 mx-5">
       <h6>ジャンル名</h6>
-        <%= form_with model: @genre,url: administrator_genres_path, local:true do |f| %>
+        <%= form_with model: @genre,url: administrator_genres_path, local:false do |f| %>
           <div class="form-inline px-5">
-             <%= f.text_field :genre_name %>
+             <%= f.text_field :genre_name, class: "reset" %>
              <%= f.submit :新規登録, class: "mx-5 btn btn-success" %>
           </div>
         <% end %>
@@ -22,13 +25,8 @@
         <th></th>
       </tr>
      </thead>
-     <tbody>
-         <% @genres.each do |genre| %>
-         <tr>
-           <td><%= genre.genre_name %></td>
-           <td><%= link_to "編集する", edit_administrator_genre_path(genre),class: "btn btn-success" %></td>
-         </tr>
-        <% end %>
+     <tbody class="genre_create">
+        <%= render "genres_create", genres: @genres %>
      </tbody>
   </table>
 </div>

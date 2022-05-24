@@ -8,8 +8,9 @@ class Administrator::GenresController < ApplicationController
   def create
     @genre = Genre.new(genre_params)
     @genres = Genre.all
-    @genre.save
-    redirect_to administrator_genres_path
+    unless @genre.save
+      render 'error'
+    end
   end
 
   def edit

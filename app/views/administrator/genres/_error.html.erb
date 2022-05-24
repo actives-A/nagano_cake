@@ -1,0 +1,8 @@
+<% if genre.errors.any? %>
+    1件のエラーが発生しました
+  <ul class="list-unstyled">
+    <% genre.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
