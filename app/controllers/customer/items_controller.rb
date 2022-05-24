@@ -1,6 +1,7 @@
 class Customer::ItemsController < ApplicationController
   def index
-    @items= Item.all.page(params[:page])
+    @items_all_count=Item.is_sales.all.count
+    @items= Item.is_sales.page(params[:page])
     @genres= Genre.all
   end
 

@@ -1,5 +1,5 @@
 <div class="container mb-5">
-  <h2 class="mb-5 mt-5">商品一覧<span>（全<%= @items.count %>件）</span></h2>
+  <h2 class="mb-5 mt-5">商品一覧<span>（全<%= @items_all_count %>件）</span></h2>
   <div class='row px-md-0 ml-2 mt-5'>
     <div class='col-md-3 mx-auto mb-3'>
       <%= render "genre", genres: @genres %>
@@ -18,8 +18,10 @@
 
           </div>
         <% end %>
-        <%= paginate @items %>
       </div>
+    <div class="text-center mx-auto">
+      <%= paginate @items %>
+    </div>
     </div>
   </div>
 </div>
