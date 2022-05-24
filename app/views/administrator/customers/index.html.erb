@@ -1,21 +1,24 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h2>会員一覧</h2>
-      <table class="table table-hover">
+      <h2 class="border-bottom mt-3 col-md-3 text-center">会員一覧</h2>
+      <table class="table table-hover mt-5">
         <thead>
           <tr>
-            <th>会員ID</th>
-            <th>氏名</th>
-            <th>メールアドレス</th>
-            <th>ステータス</th>
+            <th class="bg-light">会員ID</th>
+            <th class="bg-light">氏名</th>
+            <th class="bg-light">メールアドレス</th>
+            <th class="bg-light">ステータス</th>
           </tr>
         </thead>
         <tbody>
           <% @customers.each do |customer| %>
           <tr>
             <th><%= customer.id %></th>
-            <th><%= link_to customer.full_name,administrator_customer_path(customer) %>
+            <th><%= link_to administrator_customer_path(customer) do %>
+                <p class="text-dark"><%= customer.full_name %></p>
+                <% end %>
+            </th>
             <th><%= customer.email %></th>
             <th><%= customer.is_deleted %></th>
           </tr>
@@ -24,5 +27,8 @@
       </table>
     </div>
   </div>
-</div>
+
+<div class="col offset-5 text-center">
 <%= paginate @customers %>
+</div>
+</div>

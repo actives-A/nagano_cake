@@ -1,27 +1,50 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <table>
-        <thead>
-          <tr>
-            <th><h2><%= @customer.full_name %>さんの会員詳細</h2></th>
-          </tr>
-        </thead>
+ <div class="container">
+   <h2 class="border-bottom text-dark text-center col-md-5 mt-3"><%= @customer.full_name %> さんの会員詳細</h2>
+   <div class="row my-3">
+     <div class="col-md-8">
+       <table class="table ">
         <tbody>
-          <tr><th>会員ID</th><td><%= @customer.id %></td></tr>
-          <tr><th>氏名</th><td><%= @customer.last_name %><%= @customer.first_name %></td></tr>
-          <tr><th>フリガナ</th><td><%= @customer.kana_last_name %><%= @customer.kana_first_name %></td></tr>
-          <tr><th>郵便番号</th><td><%= @customer.postal_code %></td></tr>
-          <tr><th>住所</th><td><%= @customer.address %></td></tr>
-          <tr><th>電話番号</th><td><%= @customer.phone_namber %></td></tr>
-          <tr><th>メールアドレス</th><td><%= @customer.email %></td></tr>
-          <tr><th>会員ステータス</th><td><%= @customer.is_deleted %></td></tr>
-          <tr>
-            <td><%= link_to "編集する", edit_administrator_customer_path, class: "btn btn-success" %></td>
-            <td><%= link_to "注文履歴一覧を見る", administrator_orders_path, class: "btn btn-primary" %></td>
-          </tr>
-        </tbody>
-      </table>
+        　<tr>
+           <th class="bg-light" >会員ID</th>
+           <td><%= @customer.id %></td>
+         </tr>
+         <tr>
+         <tr>
+           <th class="bg-light" >氏名</th>
+           <td><%= @customer.last_name %>&ensp;<%= @customer.first_name %></td>
+         </tr>
+         <tr>
+           <th class="bg-light">カナ</th>
+           <td><%= @customer.kana_last_name %>&ensp;<%= @customer.kana_first_name %></td>
+         </tr>
+         <tr>
+           <th class="bg-light">郵便番号</th>
+           <td><%= @customer.postal_code %></td>
+       </tr>
+       <tr>
+         <th class="bg-light">住所</th>
+         <td><%= @customer.address %></td>
+       </tr>
+       <tr>
+         <th class="bg-light">電話番号</th>
+         <td><%= @customer.phone_namber %></td>
+       </tr>
+       <tr>
+         <th class="bg-light">メールアドレス</th>
+         <td><%= @customer.email %></td>
+       </tr>
+       <tr>
+         <th class="bg-light">会員ステータス</th>
+         <td><%= @customer.is_deleted %><</td>
+       </tr>
+      </tbody>
+     </table>
     </div>
-  </div>
+   </div>
+   <div class="row mt-2">
+     <%= link_to "編集する", edit_administrator_customer_path, class: "btn btn-green text-white rounded-pill col-md-2 ml-5" %>
+     <%= link_to "注文履歴一覧を見る", administrator_orders_path, class: "btn btn-blue text-white rounded-pill col-md-2 ml-5" %>
+   </div>
 </div>
+
+
