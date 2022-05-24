@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mt-5">
     <div class="col-md-4">
-      <h2><span class="bg-light mt-5">商品一覧</span></h2>
+     <h2 class="border-bottom text-dark text-center col-md-3 mt-3">商品一覧</h2>
     </div>
     <div class="col-md-6 mx-auto">
       <div class="d-flex justify-content-end mr-3 mb-3">
@@ -14,15 +14,15 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-10 mx-auto">
+    <div class="col-sm-10 mx-auto mt-3">
       <table class="table">
         <thead class="table-bg-light">
           <tr>
-            <th>商品ID</th>
-            <th>商品名</th>
-            <th>税抜価格</th>
-            <th>ジャンル</th>
-            <th>ステータス</th>
+            <th class="bg-light">商品ID</th>
+            <th class="bg-light">商品名</th>
+            <th class="bg-light">税抜価格</th>
+            <th class="bg-light">ジャンル</th>
+            <th class="bg-light">ステータス</th>
           </tr>
         </thead>
         <tbody>
@@ -30,12 +30,14 @@
           <tr>
             <td><%= item.id %></td>
             <td>
-              <%= link_to item.name,administrator_item_path(item) %>
+              <%= link_to administrator_item_path(item) do %>
+              <p class="text-dark"><%= item.name %></p>
+              <% end %>
             </td>
-            <td><%= item.out_tax_price %></td>
+            <td><%= number_to_currency(item.out_tax_price) %></td>
             <td><%= item.genre.genre_name %></td>
             <td id="sales_status<%= item.id %>" class="text-success">
-              <%= Item.sales_statuses_i18n[item.sales_status] %>
+            <%= Item.sales_statuses_i18n[item.sales_status] %>
             </td>
           </tr>
           <script>

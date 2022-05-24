@@ -5,8 +5,8 @@ class Item < ApplicationRecord
   validates :sales_status,presence: true
 
   has_one_attached:image
-  has_many :order_items, dependent: :destroy
-  has_many :cart_items
+  has_many :order_items
+  has_many :cart_items, dependent: :destroy
   belongs_to :genre
 
   # 販売中の商品のみ表示するスコープ

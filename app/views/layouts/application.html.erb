@@ -10,7 +10,7 @@
   </head>
   <body>
     <header class="shadow-sm">
-     <nav class="navbar navbar-expand-lg  bg-secondary ">
+     <nav class="navbar navbar-expand-lg  bg-brown ">
       <div class="container">
         <%= link_to "NaganoCake", root_path, class: 'text-white navbar-brand' %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,17 +26,19 @@
       </div>
      </nav>
    </header>
-  <% flash.each do |type,message| %>
-     <%= message %>
-   <% end %>
-  <%= yield %>
-  <div style="height: 100px;"></div>
-  <footer class="bg-secondary fixed-bottom ">
+<% flash.each do |type,message| %>
+  <div class="alert alert-warning text-center" role="alert">
 
+   <%= message %>
+   <% end %>
+  </div>
+   <%= yield %>
+  <div style="height: 100px;"></div>
+  <footer class="bg-brown fixed-bottom ">
   <div class='container'>
   	<div class='row'>
     	<div class='mx-auto mt-3'>
-    		<p>CopyRight Infratop.inc</p>
+    		<p class="text-white">Nagano Cake</p>
     	</div>
     </div>
   </div>
