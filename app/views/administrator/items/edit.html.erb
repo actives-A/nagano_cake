@@ -1,11 +1,11 @@
 <div class="container">
-  <h4><span class="bg-light">商品編集</span></h4>
+    <h2 class="border-bottom mt-3 col-md-3 text-center">注文編集</h2>
   <div class="row">
-    <div class="col-sm-6 mx-auto">
+    <div class="col-sm-6 mx-auto mt-3">
       <%= form_with model: @item ,url: administrator_item_path,method: :patch do |f| %>
         <%= render partial: "administrator/items/form", locals: { f: f } %>
         <div class="text-center">
-          <%= f.submit "変更を保存する",class: "btn btn-success" %>
+          <%= f.submit "変更を保存する",class: "btn btn-green text-white rounded-pill col-md-4" %>
         </div>
       <% end %>
    </div>

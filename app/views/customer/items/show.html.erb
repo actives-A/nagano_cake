@@ -14,7 +14,7 @@
      <%= form_with model: CartItem.new(),url: cart_items_path,method: :post  do |f| %>
       <%= f.select :quantity,select_box_items(30) %>
         <%= f.hidden_field :item_id,:value =>@item.id %>
-        <%= f.submit "カートに入れる", class: "ml-5" %>
+        <%= f.submit "カートに入れる",  class: "btn btn-outline-blue ml-5" %>
      <% end %>
     </div>
   </div>

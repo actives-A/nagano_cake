@@ -1,8 +1,8 @@
 <div class="container">
-  <h2 class="col-md-3 mt-3 bg-light text-dark text-center ">注文履歴詳細</h2>
+  <h2 class="col-md-3 mt-3 border-bottom text-dark text-center ">注文履歴詳細</h2>
   <div class="row">
     <div class="col-md-6 mt-3">
-      <h3>注文情報</h3>
+      <h5>注文情報</h5>
       <table class="table table-bordered">
      <tbody>
       <tr>
@@ -18,17 +18,17 @@
       </tr>
       <tr>
        <th class="bg-light">支払方法</th>
-       <td><%= @order.cash_mean %></td>
+       <td><%= @order.cash_mean_i18n %></td>
       </tr>
       <tr>
         <th class="bg-light">ステータス</th>
-        <td><%= @order.order_status %></td>
+        <td><%= @order.order_status_i18n %></td>
       </tr>
      </tbody>
     </table>
    </div>
     <div class="col-md-4 mt-3">
-      <h3>請求情報</h3>
+      <h5>請求情報</h5>
       <table class="table table-bordered">
        <tbody>
         <tr>
@@ -50,7 +50,7 @@
 
   <div class="row">
    <div class="col-md-8 mt-3">
-    <h3>注文内容</h3>
+    <h5>注文内容</h5>
     <table class="table table-bordered">
      <thead class="thead-light">
        <tr>

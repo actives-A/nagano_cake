@@ -84,7 +84,7 @@ class Customer::OrdersController < ApplicationController
     @order.send_money=800
     # @total=current_customer.buynow_total
     # @order.total_money=@total + @order.send_money
-    @total = @order.send_money + @order.total_money
+    # @total = @order.send_money + @order.total_money
 
   end
 

@@ -14,7 +14,7 @@ class Order < ApplicationRecord
     delivery_complete:4
   }
 
-  has_many :order_items
+  has_many :order_items, dependent: :destroy
   belongs_to :customer
 
   # 管理者の注文一覧の並べ替え機能に利用

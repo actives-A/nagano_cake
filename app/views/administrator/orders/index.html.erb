@@ -1,9 +1,9 @@
 <div class="container">
-  <h4><span class="bg-light">注文履歴一覧</span></h4>
+  <h2 class="border-bottom mt-3 col-md-3 text-center">注文履歴一覧</h2>
   <div class="row">
-    <div class="col-sm-10 mx-auto">
+    <div class="col-sm-10 mx-auto mt-5">
       <table class="table">
-        <thead class="table-bg-light">
+        <thead class="bg-light">
           <tr>
             <th style="width: 30%">購入日時</th>
             <th>購入者</th>
@@ -16,11 +16,11 @@
           <tr>
             <td style="width: 30%">
               <%= link_to administrator_order_path(order),method: :get do %>
-                <%= order.created_at.to_s(:datetime_jp) %>
+              <P class="text-dark"><%= order.created_at.to_s(:datetime_jp) %></P>
               <% end %>
             </td>
             <td>
-              <%= order.customer.first_name %><%= order.customer.last_name %>
+              <%= order.customer.last_name %><%= order.customer.first_name %>
             </td>
             <td><%= order.order_items.count %></td>
             <td><%= Order.order_statuses_i18n[order.order_status.to_sym] %></td>

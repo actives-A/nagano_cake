@@ -17,7 +17,7 @@ class Customer::AddressesController < ApplicationController
       flash[:complete]="新規配送先を登録しました"
       redirect_to addresses_path
     else
-      @address = Address.all
+        @addresses = Address.all
       render :index
     end
   end

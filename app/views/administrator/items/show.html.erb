@@ -1,10 +1,10 @@
 <div class="container">
-  <h4><span class="bg-light">商品詳細</span></h4>
+  <h2 class="border-bottom text-dark text-center col-md-3 mt-3">商品詳細</h2>
   <div class="row">
-    <div class="col-sm-3">
-      <%= image_tag @item.get_image,:size => "100x100" %>
+    <div class="col-md-3 mt-3">
+      <%= image_tag @item.get_image,:size => "240x160" %>
     </div>
-    <div class="col-sm-7">
+    <div class="col-md-7 mt-3">
       <table class="table">
         <tbody>
           <tr>
@@ -17,7 +17,7 @@
             <th>ジャンル</th><td><%= @item.genre.genre_name %></td>
           </tr>
           <tr>
-            <th>税込価格<br>(税抜価格)</th><td><%= @item.out_tax_price %>円</td>
+            <th>税込価格<br>(税抜価格)</th><td><%= number_to_currency(@item.out_tax_price) %></td>
           </tr>
           <tr>
               <th>販売ステータス</th>
@@ -33,7 +33,7 @@
       </table>
       <div class="text-center">
         <span class="text-center">
-          <%= link_to " 編集する",edit_administrator_item_path(@item) ,class: "btn btn-success"%>
+          <%= link_to " 編集する",edit_administrator_item_path(@item) ,class: "btn btn-green text-white rounded-pill col-md-4"%>
         </span>
       </div>
     </div>
