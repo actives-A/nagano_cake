@@ -2,6 +2,7 @@
 
 class Administrator::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  before_action :forced_customer_sign_out
 
   # GET /resource/sign_in
   # def new
@@ -25,6 +26,12 @@ class Administrator::SessionsController < Devise::SessionsController
 
      def after_sign_out_path_for(resource)
        administrator_session_path
+     end
+
+     def forced_customer_sign_out
+        if customer_signed_in?
+          sign_out
+        end
      end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
