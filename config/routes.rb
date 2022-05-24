@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   scope module: :customer do
     get "orders/complete" => "orders#complete"
+    get "orders/confirm" => "orders#redirect_order_new"
     resources :orders,only:[:new,:create, :index, :show]
     post "orders/confirm"
     delete 'cart_items/all_destroy' => 'cart_items#all_destroy'
@@ -37,7 +38,7 @@ Rails.application.routes.draw do
     resources :items ,only: [:index,:show,:new,:edit,:create,:update]
   end
 
-  devise_for :customer,controllers: {
+  devise_for :customer,skip: [:passwords],controllers: {
   registrations: "customer/registrations",
   sessions: 'customer/sessions'
   }

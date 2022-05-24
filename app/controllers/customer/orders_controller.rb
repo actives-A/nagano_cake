@@ -66,11 +66,14 @@ class Customer::OrdersController < ApplicationController
       order_item.save
       cart_item.destroy
     end
-    # binding.pry
     redirect_to orders_complete_path
   end
 
   def complete
+  end
+
+  def redirect_order_new
+    redirect_to new_order_path
   end
 
 
