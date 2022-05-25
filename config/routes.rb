@@ -35,9 +35,17 @@ Rails.application.routes.draw do
   namespace :administrator do
     resources :orders ,only:[:index,:show,:update]
     resources :order_items,only:[:update]
-    resources :customers, only: [:index,:show,:edit,:update]
+    resources :customers, only: [:index,:show,:edit,:update] do
+      member do
+        get :search_orders
+      end
+    end
     resources :genres, only: [:index,:create,:edit,:update]
-    resources :items ,only: [:index,:show,:new,:edit,:create,:update]
+    resources :items ,only: [:index,:show,:new,:edit,:create,:update] do
+      collection do
+        post :search_items
+      end
+    end
   end
 
 
