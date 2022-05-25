@@ -13,7 +13,7 @@ class Administrator::GenresController < ApplicationController
     redirect_to administrator_genres_path
     else
       flash[:notice] = "ジャンル名を入力してください"
-      @gebres = Genre.all
+      @genres = Genre.all
       render :index
     end
   end
