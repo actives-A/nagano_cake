@@ -2,12 +2,18 @@
    <div class="row my-5">
     <h2 class="border-bottom mt-4 col-md-3 text-center">ジャンル編集</h2>
    </div>
-   <div class="form-inline">
-        <h6>ジャンル名</h6>
-      <%= form_with model: @genre,url: administrator_genre_path(@genre), local:true do |f| %>
-        <div class="mx-5">
+    <%= form_with model: @genre,url: administrator_genre_path(@genre), local:true do |f| %>
+   <div class="row">
+
+     <div class="col-md-2">
+        ジャンル名
+        </div>
+
+        <div class="col-md-2">
           <%= f.text_field :genre_name %>
-          <%= f.submit :変更を保存, class: "mx-5 btn btn-green rounded-pill text-white " %>
+          </div>
+          <div class="col-md-3">
+          <%= f.submit :変更を保存, class: "btn btn-green rounded-pill text-white  ml-5 " %>
         </div>
      <% end %>
    </div>
