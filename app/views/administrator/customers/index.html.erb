@@ -13,7 +13,7 @@
         </thead>
         <tbody>
           <% @customers.each do |customer| %>
-          <tr  onclick='window.location="<%= administrator_customer_path(customer) %>"' role="link">
+          <tr onclick='window.location="<%= administrator_customer_path(customer) %>"' role="link">
             <td><%= customer.id %></td>
             <td><%= customer.full_name %></td>
             <td><%= customer.email %></td>
