@@ -10,9 +10,12 @@
   </head>
   <body>
     <header class="shadow-sm">
-     <nav class="navbar navbar-expand-lg  bg-brown ">
+     <nav class="navbar navbar-expand-lg bg-brown ">
       <div class="container">
-        <%= link_to "NaganoCake", root_path, class: 'text-white navbar-brand' %>
+        <%= link_to root_path, class: 'text-white navbar-brand title_logo' do %>
+          <%= image_tag 'pastry_chef.png',:size => '70x70' %>
+          <strong>N</strong>AGAN<i class="fas fa-egg"></i> <strong>C</strong>ake
+        <% end %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
