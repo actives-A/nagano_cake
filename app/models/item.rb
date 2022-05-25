@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  validates :name,presence: true
+  validates :name,uniqueness: true,presence: true
   validates :explanation,presence: true
   validates :out_tax_price,presence: true
   validates :sales_status,presence: true
