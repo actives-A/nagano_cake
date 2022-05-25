@@ -10,13 +10,9 @@
         </thead>
         <tbody>
           <% items.each do |item| %>
-          <tr>
+          <tr onclick='window.location="<%= administrator_item_path(item) %>"' role="link">
             <td><%= item.id %></td>
-            <td>
-              <%= link_to administrator_item_path(item) do %>
-              <p class="text-dark"><%= item.name %></p>
-              <% end %>
-            </td>
+            <td><%= item.name %></td>
             <td><%= number_to_currency(item.out_tax_price) %></td>
             <td><%= item.genre.genre_name %></td>
             <td id="sales_status<%= item.id %>" class="text-success">
