@@ -13,10 +13,12 @@ class Administrator::OrdersController < ApplicationController
     # binding.pry
     order=Order.find(params[:id])
     if order.update(order_status_update_params)
+      flash[:notice] = "注文ステータスを更新しました"
       if order.order_status=="payment_clear"
         order.order_items.each do |order_item|
           order_item.update(puroduction_status: "wait_for_start")
-        end
+          flash[:notice] = "製作ステータスを更新しました"
+      end
       end
       redirect_to administrator_order_path(order)
     end

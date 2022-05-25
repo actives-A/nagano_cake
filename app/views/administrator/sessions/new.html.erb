@@ -1,14 +1,21 @@
 <div class="container">
   <h2 class="border-bottom text-dark text-center col-md-3 mt-3">管理者ログイン</h2>
-　<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form_group row mt-5">
+  <%= form_with(model: @administrator, url: administrator_session_path, local: true, class: 'needs-validation', html: {novalidate: true}) do |f| %>
+  <div class="col g-3 needs-validation novalidate">
+  <div class="form_group row mt-5 mb-4">
     <%= f.label :"メールアドレス", class: "col-md-3" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" , class: "mb-3 col-md-6" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",autofocus: true, class: 'form-control col-md-6 ', required: true %>
+    <div class="invalid-feedback row offset-3">
+        メールアドレスを入力してください。
+    </div>
   </div>
 
   <div class="form_group row">
     <%= f.label :"パスワード", class: "col-3" %>
-    <%= f.password_field :password, autocomplete: "current-password", class: "mb-5 col-md-6" %>
+    <%= f.password_field :password, autocomplete: "current-password",autofocus: true, class: 'form-control col-md-6', required: true %>
+    <div class="invalid-feedback row offset-3">
+      パスワードを入力してください。
+    </div>
   </div>
 
   <% if devise_mapping.rememberable? %>
@@ -18,10 +25,11 @@
     </div>
   <% end %>
 
-  <div class="actions row">
+  <div class="actions row mt-3">
     <%= f.submit "ログイン", class: "btn btn-blue rounded-pill text-white col-md-3 offset-3 " %>
   </div>
 <% end %>
 
 <%= render "administrator/shared/links" %>
+</div>
 </div>
