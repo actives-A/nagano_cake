@@ -584,6 +584,15 @@ a.text-green:hover, a.text-green:focus {
   justify-content: center;
 }
 
+@font-face {
+    font-family:  "myFont";
+    src: url("/Atletico-RegularDemo.otf")
+}
+
 * {
-  font-family: 'Macondo', cursive;
+  font-family: "myFont",'Macondo', cursive;
+}
+
+.title_logo {
+    font-size: 26px;
 }
