@@ -28,6 +28,13 @@ class Administrator::ItemsController < ApplicationController
     end
   end
 
+  def search_items
+    
+    @item_name=params[:query]
+    @items=Item.all.where("name LIKE ?", "%#{@item_name}%").page(params[:page])
+    @items_all_count=Item.all.where("name LIKE ?", "%#{@item_name}%").count
+  end
+
   def update
     item=Item.find(params[:id])
     # binding.pry

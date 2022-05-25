@@ -21,6 +21,11 @@ class Administrator::CustomersController < ApplicationController
     end
   end
 
+  def search_orders
+    @customer=Customer.find(params[:id])
+    @orders=@customer.orders.page(params[:page])
+  end
+
   private
    def customer_params
      params.require(:customer).permit(:last_name,:first_name,:kana_last_name,:kana_first_name,:email,:postal_code,:address,:phone_namber,:encrypted_password,:is_deleted)
