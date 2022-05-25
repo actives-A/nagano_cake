@@ -13,30 +13,27 @@
         </thead>
         <tbody>
           <% @customers.each do |customer| %>
-          <tr>
-            <th><%= customer.id %></th>
-            <th><%= link_to administrator_customer_path(customer) do %>
-                <p class="text-dark"><%= customer.full_name %></p>
-                <% end %>
-            </th>
-            <th><%= customer.email %></th>
-            <th id="is_deleted<%= customer.id %>" class="text-success">
+          <tr  onclick='window.location="<%= administrator_customer_path(customer) %>"' role="link">
+            <td><%= customer.id %></td>
+            <td><%= customer.full_name %></td>
+            <td><%= customer.email %></td>
+            <td id="is_deleted<%= customer.id %>" class="text-success">
               <%= I18n.t("enums.customer.is_deleted.#{customer.is_deleted}") %>
-              <script>
+               <script>
                   if(<%= customer.is_deleted%>){
                   var element = document.querySelector('#is_deleted<%= customer.id %>');
                   element.className = 'text-secondary';
                 }
-              </script>
-              </th>
+               </script>
+            </td>
           </tr>
-          <% end %>
+         <% end %>
         </tbody>
       </table>
     </div>
   </div>
 
-<div class="col offset-5 text-center">
-<%= paginate @customers %>
-</div>
+    <div class="col offset-5 text-center">
+      <%= paginate @customers %>
+    </div>
 </div>
