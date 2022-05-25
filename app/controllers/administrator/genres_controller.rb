@@ -8,9 +8,9 @@ class Administrator::GenresController < ApplicationController
   def create
     @genre = Genre.new(genre_params)
     @genres = Genre.all
-    flash[:notice] = "ジャンルを追加しました"
     unless @genre.save
-     render 'error'
+      @genres = Genre.all
+      render :error
     end
   end
 
