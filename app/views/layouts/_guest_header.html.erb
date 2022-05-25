@@ -1,16 +1,24 @@
   <div class="navbar-collapse collapse show" id="navbarNavDropdown">
     <ul class="navbar-nav col-12 d-block text-right ">
        <li class="d-inline-block">
-        <%= link_to "About", about_path, class:"nav-link text-white" %>
+        <%= link_to about_path, class:"nav-link text-white" do %>
+         <i class="fas fa-info-circle"></i>About
+        <% end %>
       </li>
       <li class="d-inline-block">
-        <%= link_to "商品一覧", items_path , class:"nav-link text-white"%>
+        <%= link_to items_path , class:"nav-link text-white" do %>
+         <i class="fas fa-birthday-cake"></i>商品一覧
+        <% end %>
       </li>
       <li class="d-inline-block">
-        <%= link_to "新規登録", new_customer_registration_path, class:"nav-link text-white" %>
+        <%= link_to new_customer_registration_path, class:"nav-link text-white" do %>
+         <i class="fas fa-plus"></i>新規登録
+        <% end %>
       </li>
       <li class="d-inline-block">
-        <%= link_to "ログイン", new_customer_session_path , class:"nav-link text-white" %>
+        <%= link_to new_customer_session_path , class:"nav-link text-white" do %>
+         <i class="fas fa-sign-in-alt"></i>ログイン
+        <% end %>
       </li>
       <div class="form-inline d-block text-right">
         <form>
