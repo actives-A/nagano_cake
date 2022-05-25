@@ -23,6 +23,11 @@ ja:
         on_sales: "販売中"
         stop_sales: "販売停止中"
 
+    customer:
+      is_deleted:
+        true: "退会"
+        false: "有効"
+
   activerecord:
     errors:
       messages:

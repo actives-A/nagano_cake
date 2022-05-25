@@ -11,8 +11,11 @@ Rails.application.routes.draw do
     post "orders/confirm"
     delete 'cart_items/all_destroy' => 'cart_items#all_destroy'
     resources :cart_items, only: [:index, :create, :update, :destroy]
-    resources :items ,only:[:index,:show]
-    resources :items, only: [:top]
+    resources :items ,only:[:index,:show] do
+      collection do
+        post :search_items
+      end
+    end
     resources :genres, only:[:show]
     resource :customers, only: [:show, :edit, :update]
     get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
@@ -30,11 +33,23 @@ Rails.application.routes.draw do
  }
 
   namespace :administrator do
-    resources :orders ,only:[:index,:show,:update]
+    resources :orders ,only:[:index,:show,:update] do
+      collection do
+        post :order_status
+      end
+    end
     resources :order_items,only:[:update]
-    resources :customers, only: [:index,:show,:edit,:update]
+    resources :customers, only: [:index,:show,:edit,:update] do
+      member do
+        get :search_orders
+      end
+    end
     resources :genres, only: [:index,:create,:edit,:update]
-    resources :items ,only: [:index,:show,:new,:edit,:create,:update]
+    resources :items ,only: [:index,:show,:new,:edit,:create,:update] do
+      collection do
+        post :search_items
+      end
+    end
   end
 
 

@@ -1,0 +1,35 @@
+     <table class="table table-hover">
+        <thead class="table-bg-light">
+          <tr>
+            <th class="bg-light">商品ID</th>
+            <th class="bg-light">商品名</th>
+            <th class="bg-light">税抜価格</th>
+            <th class="bg-light">ジャンル</th>
+            <th class="bg-light">ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% items.each do |item| %>
+          <tr onclick='window.location="<%= administrator_item_path(item) %>"' role="link">
+            <td><%= item.id %></td>
+            <td><%= item.name %></td>
+            <td><%= number_to_currency(item.out_tax_price) %></td>
+            <td><%= item.genre.genre_name %></td>
+            <td id="sales_status<%= item.id %>" class="text-success">
+            <%= Item.sales_statuses_i18n[item.sales_status] %>
+            </td>
+          </tr>
+          <script>
+            if(<%= item.sales_status == "stop_sales"%>){
+              var element = document.querySelector('#sales_status<%= item.id %>');
+              element.className = 'text-secondary';
+            }
+          </script>
+          <% end %>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan=5 ><%= paginate items %></td>
+          </tr>
+        </tfoot>
+      </table>

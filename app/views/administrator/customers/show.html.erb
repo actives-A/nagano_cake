@@ -35,7 +35,7 @@
        </tr>
        <tr>
          <th class="bg-light">会員ステータス</th>
-         <td><%= @customer.is_deleted %></td>
+         <td><%= I18n.t("enums.customer.is_deleted.#{@customer.is_deleted}") %></td>
        </tr>
       </tbody>
      </table>
@@ -43,7 +43,7 @@
    </div>
    <div class="row mt-2">
      <%= link_to "編集する", edit_administrator_customer_path, class: "btn btn-green text-white rounded-pill col-md-2 ml-5" %>
-     <%= link_to "注文履歴一覧を見る", administrator_orders_path, class: "btn btn-blue text-white rounded-pill col-md-2 ml-5" %>
+     <%= link_to "注文履歴一覧を見る", search_orders_administrator_customer_path(@customer), class: "btn btn-blue text-white rounded-pill col-md-2 ml-5" %>
    </div>
 </div>
 

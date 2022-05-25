@@ -24,6 +24,11 @@ class Administrator::OrdersController < ApplicationController
     end
   end
 
+  def order_status
+    # binding.pry
+    @orders=Order.all.where(order_status: params[:order_status]).page(params[:page])
+  end
+
   private
 
   def order_status_update_params

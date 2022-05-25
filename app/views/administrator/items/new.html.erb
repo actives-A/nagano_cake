@@ -1,5 +1,13 @@
 <div class="container">
   <h2 class="border-bottom mt-3 col-md-3 text-center">商品新規登録</h2>
+    <% if @item.errors.any? %>
+      <%= @item.errors.count %>件のエラーが発生しました
+      <ul>
+        <% @item.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
   <div class="row">
     <div class="col-sm-6 mx-auto mt-3">
       <%= form_with model: @item ,url: administrator_items_path,method: :post do |f| %>
