@@ -1,4 +1,4 @@
-      <table class="table">
+      <table class="table table-hover">
         <thead class="bg-light">
           <tr>
             <th style="width: 30%">購入日時</th>
@@ -9,11 +9,9 @@
         </thead>
         <tbody>
           <% orders.each do |order| %>
-          <tr>
+          <tr oncrick='window.location="<%= administrator_order_path(order) %>"' role="link">
             <td style="width: 30%">
-              <%= link_to administrator_order_path(order),method: :get do %>
-              <P class="text-dark"><%= order.created_at.to_s(:datetime_jp) %></P>
-              <% end %>
+              <p class="text-dark"><%= order.created_at.to_s(:datetime_jp) %></p>
             </td>
             <td>
               <%= order.customer.last_name %><%= order.customer.first_name %>
