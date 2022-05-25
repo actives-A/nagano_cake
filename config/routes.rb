@@ -33,7 +33,11 @@ Rails.application.routes.draw do
  }
 
   namespace :administrator do
-    resources :orders ,only:[:index,:show,:update]
+    resources :orders ,only:[:index,:show,:update] do
+      collection do
+        post :order_status
+      end
+    end
     resources :order_items,only:[:update]
     resources :customers, only: [:index,:show,:edit,:update] do
       member do
