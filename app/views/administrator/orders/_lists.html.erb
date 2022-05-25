@@ -9,7 +9,7 @@
         </thead>
         <tbody>
           <% orders.each do |order| %>
-          <tr oncrick='window.location="<%= administrator_order_path(order) %>"' role="link">
+          <tr onclick='window.location="<%= administrator_order_path(order) %>"' role="link">
             <td style="width: 30%">
               <p class="text-dark"><%= order.created_at.to_s(:datetime_jp) %></p>
             </td>
