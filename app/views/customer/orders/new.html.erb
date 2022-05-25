@@ -31,12 +31,14 @@
                 <%= current_customer.full_name %>
               </div>
             </li>
+            <% unless current_customer.addresses.count==0 %>
             <li class="list-group-item">
               <%= f.radio_button :send_place, "登録済住所から選択" %><%= f.label "登録済住所から選択" %><br>
               <div class="mx-3">
                 <%= f.select :address_id,options_from_collection_for_select(current_customer.addresses, :id, :address_display) %>
               <div>
             </li>
+            <% end %>
             <li class="list-group-item">
               <%= f.radio_button :send_place, "新しいお届け先" %><%= f.label "新しいお届け先" %><br>
               <table class="mx-3">

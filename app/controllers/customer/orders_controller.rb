@@ -20,6 +20,12 @@ class Customer::OrdersController < ApplicationController
           @order.send_name=current_customer.full_name
         #   binding.pry
         elsif send_place=="登録済住所から選択"
+          # binding.pry
+          # if current_customer.addresses.count==0
+          #   binding.pry
+          #   flash[:alert] = "登録済住所がありません"
+          #   redirect_to new_order_path
+          # end
           address=current_customer.addresses.find(confirm_params[:address_id])
           @order.postal_code=address.postal_code
           @order.address=address.address
@@ -37,11 +43,11 @@ class Customer::OrdersController < ApplicationController
         end
       else
         redirect_to new_order_path
-        flash[:alert] = "支払い方法を選択してください"
+        flash[:alert] = "お届け先を選択してください"
       end
     else
       redirect_to new_order_path
-      flash[:alert] = "お届け先を選択してください"
+      flash[:alert] = "支払い方法を選択してください"
     end
     # 送料800円
     @order.send_money=800
