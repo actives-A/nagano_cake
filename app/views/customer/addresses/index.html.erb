@@ -1,8 +1,8 @@
 <div class="container">
  <h2 class="col-md-3 mt-3 border-bottom text-center">配送先登録/一覧</h2>
+ <%= form_with(model: @address, local: true, class: 'needs-validation', html: {novalidate: true}) do |f| %>
     <div class="row g-3 needs-validation novalidate">
      <div class="col-md-8 mt-3 ">
-     <%= form_with(model: @address, local: true, class: 'needs-validation', html: {novalidate: true}) do |f| %>
        <div class="form-group row">
          <%= f.label :"郵便番号（ハイフンなし）" , class: "col-md-5 "%>
          <%= f.text_field :postal_code, autofocus: true,class:'form-control col-md-3', required: true %>
@@ -28,8 +28,8 @@
      <div class="col-md-4 mt-5 pt-5">
        <%= f.submit "新規登録", class: "btn btn-yellow text-white rounded-pill mt-5 col-md-4 " %>
      </div>
-     <% end %>
     </div>
+    <% end %>
     <div class="row">
      <div class="col-md-8 mt-5 table-responsive">
       <table class="table table-bordered text-nowrap">
