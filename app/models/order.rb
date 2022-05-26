@@ -34,6 +34,15 @@ class Order < ApplicationRecord
     sum
   end
 
+  # 注文の全商品数を算出する関数
+  def count_total
+    sum=0
+    order_items.each do |order_item|
+      sum+=order_item.quantity
+    end
+    sum
+  end
+
   # 注文に紐つく注文商品群の中から製作中より低いステータス注文商品を取得
   def order_items_minimum_status
     order_items.where("puroduction_status < 3").count
