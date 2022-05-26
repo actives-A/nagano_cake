@@ -16,11 +16,11 @@
              <% end %>
              <p class="text-secondary"><%= number_to_currency(item.with_tax_price) %></p>
           </div>
-         <% end %>        
+         <% end %>
       </div>
-    <div class="text-center mx-auto">
-      <%= paginate @items %>
-    </div>
+      <div class="text-center mx-auto">
+        <%= paginate @items %>
+      </div>
     </div>
   </div>
 </div>
