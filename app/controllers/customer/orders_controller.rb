@@ -77,17 +77,13 @@ class Customer::OrdersController < ApplicationController
 
 
   def index
-    @orders = current_customer.orders
+    @orders = current_customer.orders.order(created_at: :desc).page(params[:page])
   end
 
   def show
     @order = Order.find(params[:id])
     @order_item = @order.order_items
     @order.send_money=800
-    # @total=current_customer.buynow_total
-    # @order.total_money=@total + @order.send_money
-    # @total = @order.send_money + @order.total_money
-
   end
 
 

@@ -1,28 +1,28 @@
 <div class="container mb-5">
   <h2 class="mb-5 mt-5"><%= @genre.genre_name %>一覧<span>（全<%= @items_all_count %>件）</span></h2>
-  <div class='row px-md-0 ml-2 mt-5'>
-    <div class='col-md-3 mx-auto mb-3'>
-      <%= render "customer/items/genre", genres: @genres %>
-    </div>
-    <div class='col-md-9 justify-content-end'>
-      <div class='row mb-5'>
-        <% @items.each do |item| %>
-          <div class='card mx-1 border border-0 mr-3'>
-             <%= link_to item_path(item) do %>
-              <%= image_tag item.get_image ,size: "240x160"%>
-             <% end %>
-             <%= link_to item_path(item) do %>
-             <p class="text-secondary mt-1 mb-0"><%= item.name %></p>
-             <% end %>
-             <p class="text-secondary"><%= number_to_currency(item.with_tax_price) %></p>
-          </div>
-         <% end %>
+    <div class='row px-md-0 ml-2 mt-5'>
+      <div class='col-md-3 mx-auto mb-3'>
+        <%= render "customer/items/genre", genres: @genres %>
       </div>
-    <div class="text-center mx-auto">
-      <%= paginate @items %>
+      <div class='col-md-9 justify-content-end'>
+        <div class='row mb-5'>
+          <% @items.each do |item| %>
+            <div class='card mx-1 border border-0 mr-3'>
+              <%= link_to item_path(item) do %>
+                <%= image_tag item.get_image ,size: "240x160"%>
+              <% end %>
+              <%= link_to item_path(item) do %>
+               <p class="text-secondary mt-1 mb-0"><%= item.name %></p>
+              <% end %>
+              <p class="text-secondary"><%= number_to_currency(item.with_tax_price) %></p>
+            </div>
+          <% end %>
+        </div>
+        <div class="text-center mx-auto">
+         <%= paginate @items %>
+        </div>
+      </div>
     </div>
-    </div>
-  </div>
 </div>
 
 

@@ -7,7 +7,6 @@ class Customer::CartItemsController < ApplicationController
     @sum = 0
   end
 
-
   def create
     # binding.pry
     @cart_item = CartItem.new(cart_item_params)
