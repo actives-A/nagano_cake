@@ -16,7 +16,9 @@
             <td>
               <%= order.customer.last_name %><%= order.customer.first_name %>
             </td>
-            <td><%= order.order_items.count %></td>
+            <td>
+              <%= order.count_total %>
+            </td>
             <td><%= Order.order_statuses_i18n[order.order_status.to_sym] %></td>
           </tr>
           <% end %>
