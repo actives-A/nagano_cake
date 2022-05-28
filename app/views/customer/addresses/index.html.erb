@@ -1,0 +1,61 @@
+<div class="container">
+  <h2 class="col-md-3 mt-3 border-bottom text-center">配送先登録/一覧</h2>
+   <%= form_with(model: @address, local: true, class: 'needs-validation', html: {novalidate: true}) do |f| %>
+     <div class="row g-3 needs-validation novalidate">
+      <div class="col-md-8 mt-3 ">
+        <div class="form-group row">
+          <%= f.label :"郵便番号（ハイフンなし）" , class: "col-md-5 "%>
+          <%= f.text_field :postal_code, autofocus: true,class:'form-control col-md-3', required: true %>
+          <div class="invalid-feedback row offset-5">
+            郵便番号を入力してください。
+          </div>
+       </div>
+       <div class="form-group row">
+         <%= f.label :"住所", class: "col-md-5" %>
+         <%= f.text_field :address, autofocus: true, class:'form-control col-md-7', required: true %>
+           <div class="invalid-feedback row offset-5">
+            住所を入力してください。
+           </div>
+       </div>
+       <div class="form-group row">
+         <%= f.label :"宛名", class: "col-md-5"%>
+         <%= f.text_field :name, autofocus: true, class:'form-control col-md-3', required: true %>
+         <div class="invalid-feedback row offset-5">
+           宛名を入力してください。
+         </div>
+       </div>
+      </div>
+      <div class="col-md-4 mt-5 pt-5">
+        <%= f.submit "新規登録", class: "btn btn-yellow text-white rounded-pill mt-5 col-md-4 " %>
+      </div>
+     </div>
+     <% end %>
+     <div class="row">
+       <div class="col-md-8 mt-5 table-responsive">
+        <table class="table table-bordered text-nowrap">
+         <thead class="thead-light">
+           <tr class="">
+             <th>郵便番号</th>
+             <th>住所</th>
+             <th>宛名</th>
+             <th></th>
+           </tr>
+         </thead>
+        <tbody>
+        <% @addresses.each do |address| %>
+           <tr>
+             <td><%= address.postal_code %></td>
+             <td><%= address.address %></td>
+             <td><%= address.name %></td>
+             <td class="text-center"><%= link_to "編集する", edit_address_path(address.id), class: "btn btn-outline-secondary rounded-pill text-dark text-center mr-3" %>
+                <%= link_to "削除する", address_path(address.id), class: "btn btn-outline-danger rounded-pill", method: :delete %>
+             </td>
+           </tr>
+        <% end %>
+        </tbody>
+      </table>
+     </div>
+    </div>
+</div>
+
+

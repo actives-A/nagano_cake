@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row justify-content-start">
+
+    <div class="col-5 mt-5 text-dark text-center">
+      <h2 class="border-bottom">ジャンル一覧・追加</h2>
+      <div class="errors">
+       <%= render "error", genre: @genre %>
+      </div>
+    </div>
+
+  </div>
+  <div class="row justify-content-start">
+    <div class="form-inline my-5 mx-5">
+      <h6>ジャンル名</h6>
+        <%= form_with model: @genre,url: administrator_genres_path, local:false do |f| %>
+          <div class="form-inline px-5">
+             <%= f.text_field :genre_name, class: "reset" %>
+             <%= f.submit :新規登録, class: "mx-5 btn btn-yellow text-white rounded-pill" %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+
+   <table class="table col-md-5 text-center ml-3">
+     <thead>
+      <tr>
+        <th class="bg-light">ジャンル</th>
+        <th class="bg-light"></th>
+      </tr>
+     </thead>
+     <tbody class="genre_create">
+        <%= render "genres_create", genres: @genres %>
+     </tbody>
+  </table>
+</div>

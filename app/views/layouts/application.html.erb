@@ -5,12 +5,46 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
+    </head>
   <body>
-    <%= yield %>
-  </body>
+    <header class="shadow-sm">
+     <nav class="navbar navbar-expand-lg bg-brown ">
+      <div class="container">
+        <%= link_to root_path, class: 'text-white navbar-brand title_logo' do %>
+          <%= image_tag 'pastry_chef.png',:size => '70x70' %>
+          <strong>N</strong>AGAN<i class="fas fa-egg"></i> <strong>C</strong>ake
+        <% end %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <% if customer_signed_in? %>
+          <%=render 'layouts/customer_header' %>
+        <% elsif administrator_signed_in? %>
+          <%=render 'layouts/administrator_header' %>
+        <% else %>
+          <%=render 'layouts/guest_header' %>
+        <% end %>
+      </div>
+     </nav>
+   </header>
+<% flash.each do |type,message| %>
+  <div class="alert alert-warning text-center" role="alert">
+
+   <%= message %>
+   <% end %>
+  </div>
+   <%= yield %>
+  <div style="height: 100px;"></div>
+  <footer class="bg-brown fixed-bottom ">
+  <div class='container'>
+  	<div class='row'>
+    	<div class='mx-auto mt-3'>
+    		<p class="text-white">Nagano Cake</p>
+    	</div>
+    </div>
+  </div>
+  </footer>
+ </body>
 </html>

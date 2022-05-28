@@ -1,40 +1,21 @@
-<h2>商品新規登録</h2>
-<%= form_with model: @item ,url: administrator_items_path,method: :post do |f| %>
-<div>
-  <%= f.label :image %>
-  <%= f.file_field :image %>
+<div class="container">
+  <h2 class="border-bottom mt-3 col-md-3 text-center">商品新規登録</h2>
+    <% if @item.errors.any? %>
+      <%= @item.errors.count %>件のエラーが発生しました
+      <ul>
+        <% @item.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  <div class="row">
+    <div class="col-sm-6 mx-auto mt-3">
+      <%= form_with model: @item ,url: administrator_items_path,method: :post do |f| %>
+        <%= render partial: "administrator/items/form", locals: { f: f } %>
+        <div class="text-center">
+          <%= f.submit "新規登録",class: "btn btn-blue text-white rounded-pill col-md-4" %>
+        </div>
+      <% end %>
+   </div>
+  </div>
 </div>
-
-<div>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-</div>
-
-<div>
-  <%= f.label :explanation %>
-  <%= f.text_area :explanation %>
-</div>
-
-<div>
-  <%= f.label "ジャンル" %>
-  <%= f.select :genre_id,[1,2] %>
-</div>
-
-<div>
-  <%= f.label "税抜き価格" %>
-  <%= f.number_field :out_tax_price %>
-</div>
-
-<div>
-  <%= f.label :sales_status,"販売中" %>
-  <%= f.radio_button :sales_status, true %>
-  <%= f.label :sales_status,"販売中止" %>
-  <%= f.radio_button :sales_status, false %>
-</div>
-
-<div>
-  <%= f.submit "新規登録" %>
-</div>
-
-
-<% end %>

@@ -1,6 +1,8 @@
 class Administrator::ItemsController < ApplicationController
+  before_action :authenticate_administrator!
+
   def index
-    @items=Item.all
+    @items=Item.page(params[:page])
   end
 
   def show
@@ -18,20 +20,26 @@ class Administrator::ItemsController < ApplicationController
   def create
     # binding.pry
     @item=Item.new(item_params)
-    # if params[:sales_status]=="true"
-    #   @item.sales_status=true
-    # else
-    #   @item.sales_status=false
-    # end
-
     if @item.save
-      redirect_to  administrator_items_path
+      redirect_to  administrator_item_path(@item)
+    else
+      #flash[:alert]="全ての項目を入力してください"
+      render  new_administrator_item_path
     end
+  end
+
+  def search_items
+    
+    @item_name=params[:query]
+    @items=Item.all.where("name LIKE ?", "%#{@item_name}%").page(params[:page])
+    @items_all_count=Item.all.where("name LIKE ?", "%#{@item_name}%").count
   end
 
   def update
     item=Item.find(params[:id])
+    # binding.pry
     if item.update(item_params)
+      flash[:notice] = "商品詳細を変更しました"
       redirect_to administrator_item_path(item)
     end
   end
